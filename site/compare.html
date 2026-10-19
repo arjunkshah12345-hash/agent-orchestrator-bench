@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Compare / Harness Bench</title><meta name="description" content="Compare two agent orchestrators side by side.">
+<meta property="og:title" content="Compare / Harness Bench"><meta property="og:description" content="Compare two agent orchestrators side by side."><meta property="og:type" content="website"><meta name="twitter:card" content="summary">
 <meta name="color-scheme" content="dark"><meta name="theme-color" content="#0b0b0c">
 <link rel="preload" href="assets/fonts/HostGrotesk.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="assets/vendor/dither-kit.css"><link rel="stylesheet" href="assets/style.css">
@@ -11,7 +12,7 @@
 <header class="top"><div class="wrap topin">
 <a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>Harness Bench</a>
 <button class="mb o navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav id="nav" aria-label="Primary"><a href="index.html">Home</a><a href="leaderboard.html">Leaderboard</a><a href="compare.html" aria-current="page">Compare</a><a href="methodology.html">Methodology</a><a href="about.html">About / FAQ</a></nav></div></header>
+<nav id="nav" aria-label="Primary"><a href="index.html">Home</a><a href="leaderboard.html">Feature assessment</a><a href="reproduce.html">Reproduce</a><a href="compare.html" aria-current="page">Compare</a><a href="methodology.html">Methodology</a><a href="about.html">About / FAQ</a></nav></div></header>
 <main id="main"><section class="phead"><div class="wrap"><span class="lab">Compare</span><h1>Two tools, side by side</h1>
 <p class="lede">Pick any two scored tools. The link updates so you can share the pairing.</p>
 <form class="pick" onsubmit="return false"><label><span class="lab">Tool A</span><select id="ca"><option value="orca">Orca (93)</option><option value="t3">T3 Code (90)</option><option value="synara">Synara (79)</option><option value="emdash">Emdash (74)</option><option value="paseo">Paseo (74)</option><option value="openchamber">OpenChamber (74)</option><option value="superset">Superset (72)</option><option value="cloudroom">Cloudroom (72)</option><option value="vk">Vibe Kanban (69)</option><option value="cs">Claude Squad (65)</option><option value="conductor">Conductor (62)</option><option value="sculptor">Sculptor (60)</option><option value="mux">Mux (now &#x27;Xum&#x27;) (58)</option></select></label><span class="vs lab" aria-hidden="true">vs</span><label><span class="lab">Tool B</span><select id="cb"><option value="orca">Orca (93)</option><option value="t3">T3 Code (90)</option><option value="synara">Synara (79)</option><option value="emdash">Emdash (74)</option><option value="paseo">Paseo (74)</option><option value="openchamber">OpenChamber (74)</option><option value="superset">Superset (72)</option><option value="cloudroom">Cloudroom (72)</option><option value="vk">Vibe Kanban (69)</option><option value="cs">Claude Squad (65)</option><option value="conductor">Conductor (62)</option><option value="sculptor">Sculptor (60)</option><option value="mux">Mux (now &#x27;Xum&#x27;) (58)</option></select></label><button class="mb o" id="swap" type="button">Swap</button></form></div></section>
@@ -23,7 +24,7 @@
 <section class="sec "><div class="wrap"><div class="sechead"><span class="lab">Facts</span><h2>Features, verdicts and evidence</h2></div><div class="tablewrap"><table class="cmp facts2" id="cfacts"></table></div></div><i class="x xl" aria-hidden="true"></i><i class="x xr" aria-hidden="true"></i></section>
 </main>
 <footer class="foot"><div class="hatch" aria-hidden="true"></div><div class="wrap footin">
-<div><span class="lab">Harness Bench / 2026-10-19</span><p>Agent orchestrators for coding agents. Scores are editorial judgement from docs, repos and feature testing on one Linux box. No real-model task runs were scored.</p></div>
-<div class="footnav"><a href="index.html">Home</a><a href="leaderboard.html">Leaderboard</a><a href="compare.html" aria-current="page">Compare</a><a href="methodology.html">Methodology</a><a href="about.html">About / FAQ</a></div></div></footer>
+<div><span class="lab">Harness Bench / 2026-10-19</span><p>A feature and orchestration benchmark, not a model leaderboard. The weighted feature assessment is editorial judgement from docs, repos and feature testing on one Linux box; the only measured results are stub-agent runs. No real-model task runs were scored.</p></div>
+<div class="footnav"><a href="index.html">Home</a><a href="leaderboard.html">Feature assessment</a><a href="reproduce.html">Reproduce</a><a href="compare.html" aria-current="page">Compare</a><a href="methodology.html">Methodology</a><a href="about.html">About / FAQ</a></div></div></footer>
 <script src="assets/vendor/dither-kit-lite.js" defer></script><script src="assets/data.js" defer></script><script src="assets/app.js" defer></script>
 </body></html>

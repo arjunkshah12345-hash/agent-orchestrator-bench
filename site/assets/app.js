@@ -19,8 +19,8 @@ if(tg)tg.addEventListener("click",function(){var o=nav.classList.toggle("open");
 function bars(){document.querySelectorAll("[data-bars]").forEach(function(el){
   if(el.getAttribute("data-ok"))return;
   var d=JSON.parse(el.getAttribute("data-bars")),mx=+el.getAttribute("data-max")||Math.max.apply(null,d.map(function(x){return x.value}));
-  var unit=el.getAttribute("data-unit")||"";
-  el.innerHTML=d.map(function(x){var v=(Math.round(x.value*10)/10);return '<div class="br"><span class="bl">'+esc(x.label)+'</span><span class="meter bm" data-meter="'+x.value+'" data-max="'+mx+'" data-hl="'+(x.hl?1:0)+'"></span><span class="bv">'+(v%1?v.toFixed(1):v)+unit+'</span></div>'}).join("");
+  var unit=el.getAttribute("data-unit")||"",dec=el.getAttribute("data-dec");
+  el.innerHTML=d.map(function(x){var v=(Math.round(x.value*10)/10);return '<div class="br"><span class="bl">'+esc(x.label)+'</span><span class="meter bm" data-meter="'+x.value+'" data-max="'+mx+'" data-hl="'+(x.hl?1:0)+'"></span><span class="bv">'+(dec?(+x.value).toFixed(+dec):(v%1?v.toFixed(1):v))+unit+'</span></div>'}).join("");
   el.setAttribute("data-ok","1");
 })}
 /* DitherKit meters */
@@ -97,10 +97,10 @@ function compare(){var sa=document.getElementById("ca"),sb=document.getElementBy
   function T(id){return B.tools.find(function(t){return t.id===id})}
   function render(){var a=T(sa.value),b=T(sb.value);history.replaceState(null,"","?a="+a.id+"&b="+b.id);
     document.getElementById("ka").textContent=a.name;document.getElementById("kb").textContent=b.name;
-    document.getElementById("cscore").innerHTML=[a,b].map(function(t,i){return '<a href="tools/'+t.id+'.html"><span class="lab">#'+t.rank+' / coverage '+t.coverage+'%</span><span class="podn" style="font-size:26px;letter-spacing:-.04em">'+esc(t.name)+'</span><b>'+t.score.toFixed(1)+'</b><span class="meter" data-meter="'+t.score+'" data-max="100" data-hl="'+(i?0:1)+'"></span><p>'+esc(t.why)+'</p></a>'}).join("");
+    document.getElementById("cscore").innerHTML=[a,b].map(function(t,i){return '<a href="tools/'+t.id+'.html"><span class="lab">#'+t.rank+' / range '+t.range[0]+' to '+t.range[1]+' / doc cov '+t.coverage+'% / '+t.validation+'</span><span class="podn" style="font-size:26px;letter-spacing:-.04em">'+esc(t.name)+'</span><b>'+t.score.toFixed(1)+'</b><span class="meter" data-meter="'+t.score+'" data-max="100" data-hl="'+(i?0:1)+'"></span><p>'+esc(t.why)+'</p></a>'}).join("");
     var h='<thead><tr><th scope="col">Criterion</th><th scope="col" class="wcol">Weight</th><th scope="col">'+esc(a.name)+'</th><th scope="col">'+esc(b.name)+'</th><th scope="col">Edge</th></tr></thead><tbody>';
     B.criteria.forEach(function(c){var va=a.crit[c.k],vb=b.crit[c.k];var e=(va==null||vb==null)?"n/a":va===vb?"even":(va>vb?a.short:b.short)+" +"+Math.abs(va-vb);
-      function cell(v,hl){return '<td class="m"><span class="meter" data-meter="'+(v==null?0:v)+'" data-max="5" data-none="'+(v==null?1:0)+'" data-hl="'+hl+'"></span><span class="num" style="display:block;text-align:left;margin-top:4px">'+(v==null?"· no evidence":v+" / 5")+'</span></td>'}
+      function cell(v,hl){return '<td class="m"><span class="meter" data-meter="'+(v==null?0:v)+'" data-max="5" data-none="'+(v==null?1:0)+'" data-hl="'+hl+'"></span><span class="num" style="display:block;text-align:left;margin-top:4px">'+(v==null?"n/r, no evidence":v+" / 5")+'</span></td>'}
       h+='<tr><th scope="row">'+c.k+' '+esc(c.label)+'</th><td class="num wcol">'+c.w+'</td>'+cell(va,1)+cell(vb,0)+'<td>'+esc(e)+'</td></tr>'});
     document.getElementById("ctable").innerHTML=h+"</tbody>";
     var F=[["Hands-on status","status"],["License","license"],["Pricing","price"],["Stars","stars"],["Latest release","release"],["Who it is for","who"],["Strengths","pros"],["Weaknesses","cons"],["Hands-on evidence","hands_on"],["Platforms","f:platforms"],["Agents","f:agents"],["Isolation","f:isolation"],["Review and PR","f:review"],["Remote / mobile","f:remote"],["MCP","f:mcp"],["Setup","f:setup"]];

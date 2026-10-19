@@ -56,7 +56,13 @@
    },
    "hands_on": "Fully exercised headless: 6 concurrent worktrees + stub agents, 3 logged clean runs, 6/6 verified each; crash isolation; restart persistence.",
    "bugs": "8.6k open issues+PRs; ships multiple builds per day (v1.4.230), so behaviour moves fast. 'Orchestration' layer is flagged Experimental in docs.",
-   "notes": "GitHub reports ~97.9k stars, unusually high for a 7-month-old repo; we did not audit star provenance."
+   "notes": "GitHub reports ~97.9k stars, unusually high for a 7-month-old repo; we did not audit star provenance.",
+   "range": [
+    93.0,
+    93.0
+   ],
+   "validation": "Stub end-to-end",
+   "measured": "Stub run x3, launch probe"
   },
   {
    "id": "t3",
@@ -114,7 +120,13 @@
    },
    "hands_on": "Server ran headless on Linux (ready 1.0 s, 394 MB idle). No agent session run (no authenticated agent CLI usable).",
    "bugs": "Public X thread (Oct 2026) of a user finding sidebar hard to use with hundreds of settled threads; 2.9k open issues+PRs on GitHub.",
-   "notes": "v0.1.0 (Oct 15 2026) made Orchestrator V2 stable: event-sourced command log, durable queue, restart recovery."
+   "notes": "v0.1.0 (Oct 15 2026) made Orchestrator V2 stable: event-sourced command log, durable queue, restart recovery.",
+   "range": [
+    90.0,
+    90.0
+   ],
+   "validation": "Launched",
+   "measured": "Server probe"
   },
   {
    "id": "synara",
@@ -172,7 +184,13 @@
    },
    "hands_on": "AppImage launched on Linux/Xvfb (first window 8.4 s, 2.1 GB RSS tree). Standalone server tarball failed `npm install` (ERESOLVE, then native build error).",
    "bugs": "README itself says 'early-stage software. APIs and interface details remain under active development.'",
-   "notes": "Site claims 22,045 downloads; maintainer posted 21,500+ on X (Oct 17 2026)."
+   "notes": "Site claims 22,045 downloads; maintainer posted 21,500+ on X (Oct 17 2026).",
+   "range": [
+    79.0,
+    79.0
+   ],
+   "validation": "Launched",
+   "measured": "Launch probe"
   },
   {
    "id": "emdash",
@@ -227,7 +245,13 @@
    },
    "hands_on": "Launched on Linux (6.6 s) with the largest footprint we saw: 3.9 GB RSS across 23 processes at idle.",
    "bugs": "unknown",
-   "notes": "Canary channel builds ship frequently (v1.2.8-canary.101)."
+   "notes": "Canary channel builds ship frequently (v1.2.8-canary.101).",
+   "range": [
+    72.0,
+    77.0
+   ],
+   "validation": "Launched",
+   "measured": "Launch probe"
   },
   {
    "id": "paseo",
@@ -282,7 +306,13 @@
    },
    "hands_on": "Launched on Linux (4.7 s, 852 MB); no account wall.",
    "bugs": "1.4k open issues+PRs.",
-   "notes": "Schedules feature visible in UI."
+   "notes": "Schedules feature visible in UI.",
+   "range": [
+    57.0,
+    92.0
+   ],
+   "validation": "Launched",
+   "measured": "Launch probe"
   },
   {
    "id": "openchamber",
@@ -336,7 +366,13 @@
    },
    "hands_on": "Launched on Linux (5.3 s, 1.3 GB); no account wall; ready-to-type prompt UI.",
    "bugs": "unknown",
-   "notes": ""
+   "notes": "",
+   "range": [
+    64.0,
+    84.0
+   ],
+   "validation": "Launched",
+   "measured": "Launch probe"
   },
   {
    "id": "superset",
@@ -392,7 +428,13 @@
    },
    "hands_on": "App launched on Linux (11.4 s, 895 MB) but first screen requires GitHub or Google sign-in. Stopped there (no account creation).",
    "bugs": "unknown",
-   "notes": "989 open issues+PRs; desktop-v1.39.0 released on snapshot day."
+   "notes": "989 open issues+PRs; desktop-v1.39.0 released on snapshot day.",
+   "range": [
+    70.0,
+    75.0
+   ],
+   "validation": "Launched",
+   "measured": "Launch probe"
   },
   {
    "id": "cloudroom",
@@ -450,7 +492,13 @@
    },
    "hands_on": "GUI AppImage launched (3.3 s, 795 MB). Core not installed: its installer needs root + systemd on a fresh VM, which we did not do on a shared box.",
    "bugs": "unknown",
-   "notes": "Open dispute on X (Oct 18 2026) between David Ondrej and Theo over a third-party tier list; we cite neither side's claims as evidence."
+   "notes": "Open dispute on X (Oct 18 2026) between David Ondrej and Theo over a third-party tier list; we cite neither side's claims as evidence.",
+   "range": [
+    62.0,
+    82.0
+   ],
+   "validation": "Launched",
+   "measured": "Launch probe"
   },
   {
    "id": "vk",
@@ -506,7 +554,13 @@
    },
    "hands_on": "Booted from cold npx in about 10 s, HTTP 200, ~684 MB RSS. Default config has analytics_enabled=true.",
    "bugs": "Sources disagree on scope after shutdown: one says the kanban board was retired, another that the project continues as local OSS.",
-   "notes": "Last release v0.1.44 (Apr 24 2026); last push Sep 19 2026."
+   "notes": "Last release v0.1.44 (Apr 24 2026); last push Sep 19 2026.",
+   "range": [
+    69.0,
+    69.0
+   ],
+   "validation": "Launched",
+   "measured": "Boot only"
   },
   {
    "id": "cs",
@@ -564,7 +618,13 @@
    },
    "hands_on": "Fully exercised via tmux key driving: 6/6 verified in each of 3 logged clean runs; crash isolation; restart recovery (paused + resumable).",
    "bugs": "Observed: `-p/--program` flag was ignored by the new-session form when no profile existed (it still offered 'claude'); fixed by adding a profile. Error 'timed out waiting for tmux session' when the program is missing.",
-   "notes": "Last release v1.0.20 on Aug 20 2026; repo last push same day."
+   "notes": "Last release v1.0.20 on Aug 20 2026; repo last push same day.",
+   "range": [
+    65.0,
+    65.0
+   ],
+   "validation": "Stub end-to-end",
+   "measured": "Stub run x3"
   },
   {
    "id": "conductor",
@@ -620,7 +680,13 @@
    },
    "hands_on": "Not testable: macOS-only, this box is Linux.",
    "bugs": "unknown",
-   "notes": "Pricing per conductor.build/pricing (via search) and two secondary sources."
+   "notes": "Pricing per conductor.build/pricing (via search) and two secondary sources.",
+   "range": [
+    55.0,
+    70.0
+   ],
+   "validation": "None",
+   "measured": "None"
   },
   {
    "id": "sculptor",
@@ -674,7 +740,13 @@
    },
    "hands_on": "Not testable: requires Docker, which is not available on this box.",
    "bugs": "unknown",
-   "notes": "GitHub API: latest stable sculptor-v0.48.0 published 2026-09-21; a search summary said 2025, we trust the API."
+   "notes": "GitHub API: latest stable sculptor-v0.48.0 published 2026-09-21; a search summary said 2025, we trust the API.",
+   "range": [
+    55.0,
+    65.0
+   ],
+   "validation": "None",
+   "measured": "None"
   },
   {
    "id": "mux",
@@ -728,7 +800,13 @@
    },
    "hands_on": "Launched on Linux (6.1 s, 1.07 GB).",
    "bugs": "unknown",
-   "notes": "Repo renamed mux -> xum during 2026."
+   "notes": "Repo renamed mux -> xum during 2026.",
+   "range": [
+    36.0,
+    81.0
+   ],
+   "validation": "Launched",
+   "measured": "Launch probe"
   }
  ],
  "criteria": [
