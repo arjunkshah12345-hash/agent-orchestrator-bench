@@ -1,0 +1,60 @@
+{
+ "_worktree_setup_s": 0.043,
+ "t4": {
+  "agent_exit": 1,
+  "wall_s": 179.5,
+  "verified": false
+ },
+ "t2": {
+  "agent_exit": 1,
+  "wall_s": 233.3,
+  "verified": false
+ },
+ "t5b": {
+  "agent_exit": 1,
+  "wall_s": 234.8,
+  "verified": false
+ },
+ "t5a": {
+  "agent_exit": 1,
+  "wall_s": 292.2,
+  "verified": false
+ },
+ "t1": {
+  "agent_exit": 1,
+  "wall_s": 292.5,
+  "verified": false
+ },
+ "t3": {
+  "agent_exit": 1,
+  "wall_s": 347.9,
+  "verified": false
+ },
+ "_total_wall_s": 348.0,
+ "_merge": [
+  {
+   "branch": "t1",
+   "result": "clean"
+  },
+  {
+   "branch": "t2",
+   "result": "clean"
+  },
+  {
+   "branch": "t3",
+   "result": "clean"
+  },
+  {
+   "branch": "t4",
+   "result": "clean"
+  },
+  {
+   "branch": "t5a",
+   "result": "clean"
+  },
+  {
+   "branch": "t5b",
+   "result": "clean"
+  }
+ ]
+}

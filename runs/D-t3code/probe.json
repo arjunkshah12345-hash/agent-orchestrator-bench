@@ -1,0 +1,8 @@
+{
+ "cmd": "/workspace/orchestrator-bench/tools/t3/t3-0.1.0-linux-x64/t3 serve --port 3773 --base-dir /tmp/t3home --no-browser /tmp",
+ "ready_s": 1.01,
+ "alive_after_5s_idle": true,
+ "exit_code": null,
+ "idle_rss_mb": 394,
+ "procs": 1
+}

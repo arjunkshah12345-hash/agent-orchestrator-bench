@@ -1,0 +1,2 @@
+terminals after 3 server restarts: 12 ['refs/heads/t1', 'refs/heads/t5a', 'refs/heads/t3', 'refs/heads/t5b', 'refs/heads/t2', 'refs/heads/t4', 'refs/heads/t2', 'refs/heads/t3']
+worktrees: 7

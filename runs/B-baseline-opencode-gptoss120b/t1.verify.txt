@@ -1,0 +1,17 @@
+    def test_zero(self): self.assertEqual(paginate(list(range(10)),0,3),[])
+                         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [0, 1, 2] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+0
+
+- [0, 1, 2]
++ []
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+FAILED (failures=4)
+
+t1 FAIL

@@ -1,0 +1,7 @@
+{"tool": "synara", "first_window_s": 8.37, "alive_after_12s": true, "exit_code": null, "rss_mb_tree": 2134, "procs": 9, "visible_windows": 1}
+{"tool": "superset", "first_window_s": 11.41, "alive_after_12s": true, "exit_code": null, "rss_mb_tree": 895, "procs": 7, "visible_windows": 1}
+{"tool": "emdash", "first_window_s": 6.59, "alive_after_12s": true, "exit_code": null, "rss_mb_tree": 3932, "procs": 23, "visible_windows": 1}
+{"tool": "openchamber", "first_window_s": 5.32, "alive_after_12s": true, "exit_code": null, "rss_mb_tree": 1297, "procs": 7, "visible_windows": 1}
+{"tool": "paseo", "first_window_s": 4.65, "alive_after_12s": true, "exit_code": null, "rss_mb_tree": 852, "procs": 7, "visible_windows": 1}
+{"tool": "cloudroom-gui", "first_window_s": 3.3, "alive_after_12s": true, "exit_code": null, "rss_mb_tree": 795, "procs": 7, "visible_windows": 1}
+{"tool": "mux", "first_window_s": 6.08, "alive_after_12s": true, "exit_code": null, "rss_mb_tree": 1065, "procs": 7, "visible_windows": 1}

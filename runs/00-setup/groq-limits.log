@@ -1,0 +1,27 @@
+== openai/gpt-oss-120b
+HTTP/2 200 
+x-ratelimit-limit-requests: 1000
+x-ratelimit-limit-tokens: 8000
+x-ratelimit-remaining-requests: 996
+x-ratelimit-remaining-tokens: 3347
+x-ratelimit-reset-requests: 5m45.6s
+x-ratelimit-reset-tokens: 34.897s
+{"id":"chatcmpl-d6b0493f-f26d-4ea2-bbf9-fe6c4a8fc066","object":"chat.completion","created":1792429011,"model":"openai/gpt-oss-120b","choices":[{"index":0,"message":{"role":"assistant","content":"","reasoning":"The user says \"say ok\". That's a simpl
+== openai/gpt-oss-20b
+HTTP/2 200 
+x-ratelimit-limit-requests: 1000
+x-ratelimit-limit-tokens: 8000
+x-ratelimit-remaining-requests: 999
+x-ratelimit-remaining-tokens: 7907
+x-ratelimit-reset-requests: 1m26.4s
+x-ratelimit-reset-tokens: 697ms
+{"id":"chatcmpl-4bb56146-e7d5-4241-b2f6-fb084210840e","object":"chat.completion","created":1792429012,"model":"openai/gpt-oss-20b","choices":[{"index":0,"message":{"role":"assistant","content":"","reasoning":"User: \"say ok\". Likely they want a simp
+== qwen/qwen3.8-27b
+HTTP/2 200 
+x-ratelimit-limit-requests: 1000
+x-ratelimit-limit-tokens: 8000
+x-ratelimit-remaining-requests: 999
+x-ratelimit-remaining-tokens: 7966
+x-ratelimit-reset-requests: 1m26.4s
+x-ratelimit-reset-tokens: 255ms
+{"id":"chatcmpl-ba66be07-b1ad-47e1-9f0a-fdf6b854d9e9","object":"chat.completion","created":1792429012,"model":"qwen/qwen3.8-27b","choices":[{"index":0,"message":{"role":"assistant","content":"ok"},"logprobs":null,"finish_reason":"stop"}],"usage":{"qu

@@ -1,0 +1,9 @@
+{
+ "tool": "cloudroom-gui",
+ "first_window_s": 3.3,
+ "alive_after_12s": true,
+ "exit_code": null,
+ "rss_mb_tree": 795,
+ "procs": 7,
+ "visible_windows": 1
+}

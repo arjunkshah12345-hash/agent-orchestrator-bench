@@ -1,0 +1,50 @@
+
+
+       Instances                                                  ╭────────────────────────────────────────╮╭────────────────────────────────────────╮╭──────────────────────────────────────────╮
+                                                                  │                Preview                 ││                  Diff                  ││                 Terminal                 │
+                                                                  │                                        └┴────────────────────────────────────────┴┴──────────────────────────────────────────┤
+        1.  t1                                             ●      │Feature: in shelf/config.py add a keyword argument env="dev" to load_config(overrides=None, env="dev"); the returned dict     │
+            Ꮧ-bench/t1                                            │must include key 'env' set to that value (overrides may still override it).                                                   │
+                                                                  │[benchagent] task t5b cwd ~/.claude-squad/worktrees/bench/t5b_18dffe4c3550093f                                        │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+        2.  t2                                             ●      │                                                                                                                              │
+            Ꮧ-bench/t2                                            │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+        3.  t3                                             ●      │                                                                                                                              │
+            Ꮧ-bench/t3                                            │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+        4.  t4                                             ●      │                                                                                                                              │
+            Ꮧ-bench/t4                                            │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+        5.  t5a                                            ●      │                                                                                                                              │
+            Ꮧ-bench/t5a                                           │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+        6.  t5b                                            ⠇      │                                                                                                                              │
+            Ꮧ-bench/t5b                                           │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+                                                       n new • D kill │ ↵/o open • p push branch • c checkout │ tab switch tab • ? help • q quit
+
+
+

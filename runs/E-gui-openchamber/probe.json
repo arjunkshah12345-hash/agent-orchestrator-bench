@@ -1,0 +1,9 @@
+{
+ "tool": "openchamber",
+ "first_window_s": 5.32,
+ "alive_after_12s": true,
+ "exit_code": null,
+ "rss_mb_tree": 1297,
+ "procs": 7,
+ "visible_windows": 1
+}

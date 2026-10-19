@@ -1,0 +1,12 @@
+st recent call last):
+  File "/tmp/tmpiqpgrl51/r/_verify_hidden.py", line 4, in test_retries_default
+    def test_retries_default(self): self.assertEqual(load_config()["retries"],5)
+                                    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 != 5
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)
+
+t5a FAIL

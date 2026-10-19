@@ -1,0 +1,50 @@
+
+       Instances                                                  ╭────────────────────────────────────────╮╭────────────────────────────────────────╮╭──────────────────────────────────────────╮
+                                                                  │                Preview                 ││                  Diff                  ││                 Terminal                 │
+                                                                  │                                        └┴────────────────────────────────────────┴┴──────────────────────────────────────────┤
+        1.  t1                                             ●      │Write tests: shelf/stats.py has no tests. Create tests/test_stats.py using unittest covering mean, median (odd and even       │
+            Ꮧ-bench/t1                                            │length, unsorted input), clamp (below, inside, above, lo>hi error) and empty-input errors. Do not modify shelf/stats.py.      │
+                                                                  │Tests must pass: python3 -m unittest discover -s tests -t .                                                                   │
+                                                                  │[benchagent] task t4 cwd ~/.claude-squad/worktrees/bench/t4_18dffe4b6862aa39                                          │
+                                                                  │                                                                                                                              │
+        2.  t2                                             ●      │                                                                                                                              │
+            Ꮧ-bench/t2                                            │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+        3.  t3                                             ●      │                                                                                                                              │
+            Ꮧ-bench/t3                                            │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+        4.  t4                                             ⠙      │                                                                                                                              │
+            Ꮧ-bench/t4                                            │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  │                                                                                                                              │
+                                                                  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+                                                       n new • D kill │ ↵/o open • p push branch • c checkout │ tab switch tab • ? help • q quit
+
+
+

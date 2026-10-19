@@ -1,0 +1,5 @@
+[0m
+> build · openai/gpt-oss-120b
+[0m
+[0m✱ [0mGlob "**/paging.py"[90m 1 match[0m
+[91m[1mError: [0m{"message":"Tool call validation failed: tool call validation failed: parameters for tool read did not match schema: errors: [missing properties: 'filePath']","type":"invalid_request_error"}

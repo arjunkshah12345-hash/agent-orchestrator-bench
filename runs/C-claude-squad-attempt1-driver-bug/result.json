@@ -1,0 +1,47 @@
+{
+ "ui_ready_s": 0.22,
+ "sessions": {
+  "t1": {
+   "verified": true,
+   "partial_file": false
+  },
+  "t2": {
+   "worktree": false
+  },
+  "t3": {
+   "worktree": false
+  },
+  "t4": {
+   "worktree": false
+  },
+  "t5a": {
+   "worktree": false
+  },
+  "t5b": {
+   "worktree": false
+  }
+ },
+ "first_agent_running_s": 1.66,
+ "create_each_s": {
+  "t1": 1.44,
+  "t2": 30.02,
+  "t3": 30.01,
+  "t4": 30.01,
+  "t5a": 30.07,
+  "t5b": 30.01
+ },
+ "all_sessions_created_s": 153.63,
+ "worktrees_found": {
+  "t1": "~/.claude-squad/worktrees/bench/t1_18dffd059a318ca4",
+  "t2": null,
+  "t3": null,
+  "t4": null,
+  "t5a": null,
+  "t5b": null
+ },
+ "total_wall_s": 165.78,
+ "branches": [
+  "+",
+  "bench/t1"
+ ]
+}

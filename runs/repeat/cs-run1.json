@@ -1,0 +1,62 @@
+{
+ "ui_ready_s": 0.23,
+ "sessions": {
+  "t1": {
+   "verified": true,
+   "partial_file": false
+  },
+  "t2": {
+   "verified": true,
+   "partial_file": false
+  },
+  "t3": {
+   "verified": true,
+   "partial_file": false
+  },
+  "t4": {
+   "verified": true,
+   "partial_file": false
+  },
+  "t5a": {
+   "verified": true,
+   "partial_file": false
+  },
+  "t5b": {
+   "verified": true,
+   "partial_file": false
+  }
+ },
+ "first_agent_running_s": 1.89,
+ "create_each_s": {
+  "t1": 1.66,
+  "t2": 1.57,
+  "t3": 1.56,
+  "t4": 1.57,
+  "t5a": 1.36,
+  "t5b": 1.34
+ },
+ "all_sessions_created_s": 11.18,
+ "worktrees_found": {
+  "t1": "~/.claude-squad/worktrees/bench/t1_18dffe3519aaacd9",
+  "t2": "~/.claude-squad/worktrees/bench/t2_18dffe3588194666",
+  "t3": "~/.claude-squad/worktrees/bench/t3_18dffe35ffbca66c",
+  "t4": "~/.claude-squad/worktrees/bench/t4_18dffe366a057525",
+  "t5a": "~/.claude-squad/worktrees/bench/t5a_18dffe36d0fd597e",
+  "t5b": "~/.claude-squad/worktrees/bench/t5b_18dffe373500c823"
+ },
+ "total_wall_s": 24.09,
+ "branches": [
+  "+",
+  "bench/t1",
+  "+",
+  "bench/t2",
+  "+",
+  "bench/t3",
+  "+",
+  "bench/t4",
+  "+",
+  "bench/t5a",
+  "+",
+  "bench/t5b"
+ ]
+}

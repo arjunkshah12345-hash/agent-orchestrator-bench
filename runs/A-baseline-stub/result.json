@@ -1,0 +1,63 @@
+{
+ "_worktree_setup_s": 0.043,
+ "t5b": {
+  "agent_exit": 0,
+  "wall_s": 8.0,
+  "verified": true
+ },
+ "t3": {
+  "agent_exit": 0,
+  "wall_s": 8.0,
+  "verified": true
+ },
+ "t5a": {
+  "agent_exit": 0,
+  "wall_s": 8.0,
+  "verified": true
+ },
+ "t2": {
+  "agent_exit": 0,
+  "wall_s": 8.0,
+  "verified": true
+ },
+ "t1": {
+  "agent_exit": 0,
+  "wall_s": 8.0,
+  "verified": true
+ },
+ "t4": {
+  "agent_exit": 0,
+  "wall_s": 8.0,
+  "verified": true
+ },
+ "_total_wall_s": 8.4,
+ "_merge": [
+  {
+   "branch": "t1",
+   "result": "clean"
+  },
+  {
+   "branch": "t2",
+   "result": "clean"
+  },
+  {
+   "branch": "t3",
+   "result": "clean"
+  },
+  {
+   "branch": "t4",
+   "result": "clean"
+  },
+  {
+   "branch": "t5a",
+   "result": "clean"
+  },
+  {
+   "branch": "t5b",
+   "result": "CONFLICT",
+   "files": [
+    "shelf/config.py"
+   ]
+  }
+ ]
+}

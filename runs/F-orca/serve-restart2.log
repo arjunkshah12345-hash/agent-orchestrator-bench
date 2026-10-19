@@ -1,0 +1,12 @@
+[serve] running on orcad 0.1.0+7a87e80a2a8a
+[orcad-telemetry] {"event":"profile_state_authority_selected","backend":"sqlite","classification":"sqlite-only","authority_mode":"sqlite-established","runtime":"orcad","migrated":false}
+[orcad] orcad is bound to 0.0.0.0 and is reachable from the network. Anything that can reach this port can attempt pairing.
+Orca server ready
+Bound endpoint: ws://0.0.0.0:6768
+Advertised endpoint: ws://127.0.0.1:6768
+Build: 0.1.0+7a87e80a2a8a (4b30ebdb0899d439), Node 24.21.0 ABI 137
+Terminal daemon: live — PTY self-test passed (pty-spawn: healthy); terminals survive an orcad restart: yes
+Terminal process ceiling: off (disabled)
+Pairing unavailable: disabled_by_operator
+Pairing guidance: Restart without --no-pairing to create a client pairing offer.
+[agent-state-rules] download failed: HTTP 404

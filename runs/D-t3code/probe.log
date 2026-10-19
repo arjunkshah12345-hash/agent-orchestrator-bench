@@ -1,0 +1,112 @@
+bash: cannot set terminal process group (375476): Inappropriate ioctl for device
+bash: no job control in this shell
+[10:09:39.830] INFO (#51): Migrations ran successfully
+  migrations: [
+    '1_OrchestrationEvents',
+    '2_OrchestrationCommandReceipts',
+    '3_CheckpointDiffBlobs',
+    '4_ProviderSessionRuntime',
+    '5_Projections',
+    '6_ProjectionThreadSessionRuntimeModeColumns',
+    '7_ProjectionThreadMessageAttachments',
+    '8_ProjectionThreadActivitySequence',
+    '9_ProviderSessionRuntimeMode',
+    '10_ProjectionThreadsRuntimeMode',
+    '11_OrchestrationThreadCreatedRuntimeMode',
+    '12_ProjectionThreadsInteractionMode',
+    '13_ProjectionThreadProposedPlans',
+    '14_ProjectionThreadProposedPlanImplementation',
+    '15_ProjectionTurnsSourceProposedPlan',
+    '16_CanonicalizeModelSelections',
+    '17_ProjectionThreadsArchivedAt',
+    '18_ProjectionThreadsArchivedAtIndex',
+    '19_ProjectionSnapshotLookupIndexes',
+    '20_AuthAccessManagement',
+    '21_AuthSessionClientMetadata',
+    '22_AuthSessionLastConnectedAt',
+    '23_ProjectionThreadShellSummary',
+    '24_BackfillProjectionThreadShellSummary',
+    '25_CleanupInvalidProjectionPendingApprovals',
+    '26_CanonicalizeModelSelectionOptions',
+    '27_ProviderSessionRuntimeInstanceId',
+    '28_ProjectionThreadSessionInstanceId',
+    '29_ProjectionThreadDetailOrderingIndexes',
+    '30_ProjectionThreadShellArchiveIndexes',
+    '31_AuthAuthorizationScopes',
+    '32_AuthPairingProofKeyThumbprint',
+    '33_ProjectionThreadsSettled',
+    '34_ProjectionThreadsSnoozed',
+    '35_ProjectionThreadTitleRegeneration',
+    '36_ProjectionThreadsPinned',
+    '37_ProjectionTurnsKeysetIndex',
+    '38_ProjectionThreadsPinOrderKey',
+    '39_ProjectionProjectsDefaultThreadEnvMode',
+    '40_ProjectionProjectFaviconPath',
+    '41_AuthSessionClientConnection',
+    '42_ProjectionThreadLinkedPullRequest',
+    '43_ProjectionThreadsUnsettledAt',
+    '44_ClearAutomaticProjectModelDefaults',
+    '45_ProjectionProjectsAutoPull',
+    '46_RepairAutomaticSettlementTimestamps',
+    '47_ProjectionProjectIcon',
+    '48_ProjectionThreadBranchPullRequest',
+    '49_ProjectionThreadsActiveOrderKey',
+    '50_ProjectionThreadPullRequests',
+    '51_ProjectionThreadMessageContext',
+    '52_ProjectionThreadTitleState',
+    '53_PullRequestFilesViewed',
+    '54_ProjectionThreadsAutoSettleDisabledAt',
+    '55_OrchestrationV2',
+    '56_RemoveRedundantProjectionIndexes',
+    '57_ScheduledTaskWebhooks',
+    '58_WebhookRelayDeliveries',
+    '59_McpAppModelContext',
+    '60_ThreadSnapshotWindowIndexes',
+    '61_PullRequestReviewGuides',
+    '62_ThreadFailureLookupIndex'
+  ]
+[10:09:39.929] WARN (#420): Claude Agent CLI health check failed.
+  { errorTag: 'PlatformError' }
+[10:09:40.159] INFO (#4891): Listening on http://127.0.0.1:3773
+[10:09:40.171] INFO (#4890): agent activity publishing standby; waiting for T3 Connect link reconciliation
+[10:09:40.171] INFO (#4890): V2 orchestration recovery completed
+  {
+    terminalizedRuns: 0,
+    stoppedSessions: 0,
+    closedRequests: 0,
+    retiredEffects: 0,
+    requeuedEffects: 0
+  }
+T3 Code server is ready.
+Connection string: http://localhost:3773
+Token: REDACTED
+Pairing URL: http://localhost:3773/pair#token=REDACTED
+
+                                     
+  █▀▀▀▀▀█  ▄▄  █▀  ▀█▄▀ ▄▀▄ █▀▀▀▀▀█  
+  █ ███ █ ▀▀█▄█▄▀  █▀▀▄█ ▀▄ █ ███ █  
+  █ ▀▀▀ █ █ ▄▄▀█▀▄██▀▄▀██▀█ █ ▀▀▀ █  
+  ▀▀▀▀▀▀▀ ▀ ▀▄█ █▄█▄█▄█▄▀ ▀ ▀▀▀▀▀▀▀  
+  ▄█▄▄▀▄▀ █ ▄▀▄ ▀█▀█ ▀▄▀█▄▀█ █▀▄█    
+  ▄███▀▄▀▀ █ ▄▄▀█▀▄ ▀▄█▄ █▄█   ▀ █   
+  █▀█▄ █▀▀██ ▀██ ▀█▄▄█▀ █▀▀▄▀▄▀▀▄▀   
+  ▀ █ ▄▄▀▄▄▀ ▀███▀▄▀ ▄█▄▀█▀▀▀▄ █▀▀   
+  █▄▀██▀▀▄ █▄██▄█ █▄▄▀▄▀█▄▀▄▀ ▀▄▄█   
+  ▄▀▀▄▀▄▀▀ ▀▀█ ▄▀▄▄▀█▄██ █▀▀█  ▀ █   
+  █▀ ▀▄▄▀██▄▄▄█▀█ █ ▄█  ▀  ▀▀▄▀▀▄█▀  
+    ▄▀  ▀▀█ ██ ▀▀ █▀▄ ▀█▄▀ ██   ▀█   
+  ▀▀▀ ▀ ▀▀█▄█▄▀▄▀ █ █▀▄█▄▀█▀▀▀█▀▄▄   
+  █▀▀▀▀▀█  ▄ ▀█  ▀▄▀▄▄▀█  █ ▀ ██ ▀   
+  █ ███ █ ▀▄█▄▀ ▀  ▄██▀▄█▄▀▀█▀██▄█▀  
+  █ ▀▀▀ █ ▄ ▄▄▄▄   ▀▄▄█▄█▀ ▄██▀▀     
+  ▀▀▀▀▀▀▀   ▀ ▀▀▀  ▀▀▀ ▀ ▀▀ ▀ ▀   ▀  
+                                     
+
+[10:09:44.730] INFO (#11): V2 orchestration shutdown reconciliation completed
+  {
+    terminalizedRuns: 0,
+    stoppedSessions: 0,
+    closedRequests: 0,
+    retiredEffects: 0,
+    requeuedEffects: 0
+  }

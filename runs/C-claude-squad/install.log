@@ -1,0 +1,11 @@
+total 6572
+drwxr-xr-x 2 box box    4096 Oct 19 09:59 .
+drwxr-xr-x 3 box box    4096 Oct 19 09:59 ..
+-rw-r--r-- 1 box box   34260 Aug 19 22:10 LICENSE.md
+-rw-r--r-- 1 box box    5539 Aug 19 22:10 README.md
+-rwxr-xr-x 1 box box 4776120 Aug 19 22:10 claude-squad
+-rw-r--r-- 1 box box 1895464 Oct 19 09:59 cs.tgz
+
+real	0m0.252s
+user	0m0.065s
+sys	0m0.013s

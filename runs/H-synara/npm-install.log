@@ -1,0 +1,35 @@
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: @opencode/client@2.0.25
+npm error Found: effect@4.0.0-beta.25
+npm error node_modules/effect
+npm error   effect@"https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b" from the root project
+npm error   peer effect@"^4.0.0-beta.25" from @effect/platform-node@4.0.0-beta.25
+npm error   node_modules/@effect/platform-node
+npm error     @effect/platform-node@"https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node@8881a9b" from the root project
+npm error   2 more (@effect/sql-sqlite-bun, @effect/platform-node-shared)
+npm error
+npm error Could not resolve dependency:
+npm error peerOptional effect@"4.0.0-rc.112" from @opencode/client@2.0.25
+npm error node_modules/@opencode/client
+npm error   @opencode/client@"2.0.25" from the root project
+npm error
+npm error Conflicting peer dependency: effect@4.0.0-rc.112
+npm error node_modules/effect
+npm error   peerOptional effect@"4.0.0-rc.112" from @opencode/client@2.0.25
+npm error   node_modules/@opencode/client
+npm error     @opencode/client@"2.0.25" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error ~/.npm/_logs/2026-10-19T17_22_58_667Z-eresolve-report.txt
+npm error A complete log of this run can be found in: ~/.npm/_logs/2026-10-19T17_22_58_667Z-debug-0.log
+
+real	0m10.459s
+user	0m4.384s
+sys	0m1.186s

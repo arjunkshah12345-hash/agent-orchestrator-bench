@@ -1,0 +1,12 @@
+Name(name, module) for name in names]
+              ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "/tmp/tmpa9jdmyc8/r/_verify_hidden.py", line 2, in <module>
+    from shelf.slug import slugify
+  File "/tmp/tmpa9jdmyc8/r/shelf/slug.py", line 23
+    +
+     ^
+SyntaxError: invalid syntax
+
+t2 FAIL

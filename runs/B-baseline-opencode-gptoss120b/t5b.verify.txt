@@ -1,0 +1,13 @@
+-------------
+Traceback (most recent call last):
+  File "/tmp/tmp22tiusdn/r/_verify_hidden.py", line 5, in test_env_default
+    def test_env_default(self): self.assertEqual(load_config()["env"],"dev")
+                                                 ~~~~~~~~~~~~~^^^^^^^
+KeyError: 'env'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (errors=2)
+
+t5b FAIL

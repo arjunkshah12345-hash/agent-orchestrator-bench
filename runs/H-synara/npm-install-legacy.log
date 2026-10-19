@@ -1,0 +1,60 @@
+npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+npm error code 1
+npm error path /workspace/orchestrator-bench/tools/synara-server/node_modules/node-pty
+npm error command failed
+npm error command sh -c node scripts/prebuild.js || node-gyp rebuild
+npm error [32m> Checking prebuilds...[0m
+npm error [33m> Rebuilding because directory /workspace/orchestrator-bench/tools/synara-server/node_modules/node-pty/prebuilds/linux-x64 does not exist[0m
+npm error gyp info it worked if it ends with ok
+npm error gyp info using node-gyp@11.5.0
+npm error gyp info using node@22.23.3 | linux | x64
+npm error gyp info find Python using Python version 3.13.5 found at "/usr/bin/python3"
+npm error gyp http GET https://nodejs.org/download/release/v22.23.3/node-v22.23.3-headers.tar.gz
+npm error gyp http 200 https://nodejs.org/download/release/v22.23.3/node-v22.23.3-headers.tar.gz
+npm error gyp http GET https://nodejs.org/download/release/v22.23.3/SHASUMS256.txt
+npm error gyp http 200 https://nodejs.org/download/release/v22.23.3/SHASUMS256.txt
+npm error gyp info spawn /usr/bin/python3
+npm error gyp info spawn args [
+npm error gyp info spawn args '~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py',
+npm error gyp info spawn args 'binding.gyp',
+npm error gyp info spawn args '-f',
+npm error gyp info spawn args 'make',
+npm error gyp info spawn args '-I',
+npm error gyp info spawn args '/workspace/orchestrator-bench/tools/synara-server/node_modules/node-pty/build/config.gypi',
+npm error gyp info spawn args '-I',
+npm error gyp info spawn args '~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/node-gyp/addon.gypi',
+npm error gyp info spawn args '-I',
+npm error gyp info spawn args '~/.cache/node-gyp/22.23.3/include/node/common.gypi',
+npm error gyp info spawn args '-Dlibrary=shared_library',
+npm error gyp info spawn args '-Dvisibility=default',
+npm error gyp info spawn args '-Dnode_root_dir=~/.cache/node-gyp/22.23.3',
+npm error gyp info spawn args '-Dnode_gyp_dir=~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/node-gyp',
+npm error gyp info spawn args '-Dnode_lib_file=~/.cache/node-gyp/22.23.3/<(target_arch)/node.lib',
+npm error gyp info spawn args '-Dmodule_root_dir=/workspace/orchestrator-bench/tools/synara-server/node_modules/node-pty',
+npm error gyp info spawn args '-Dnode_engine=v8',
+npm error gyp info spawn args '--depth=.',
+npm error gyp info spawn args '--no-parallel',
+npm error gyp info spawn args '--generator-output',
+npm error gyp info spawn args 'build',
+npm error gyp info spawn args '-Goutput_dir=.'
+npm error gyp info spawn args ]
+npm error gyp ERR! build error 
+npm error gyp ERR! stack Error: not found: make
+npm error gyp ERR! stack at getNotFoundError (~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/which/lib/index.js:16:17)
+npm error gyp ERR! stack at which (~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/which/lib/index.js:77:9)
+npm error gyp ERR! stack at async doWhich (~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:120:22)
+npm error gyp ERR! stack at async loadConfigGypi (~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:78:7)
+npm error gyp ERR! stack at async build (~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:36:3)
+npm error gyp ERR! stack at async run (~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js:81:18)
+npm error gyp ERR! System Linux 6.12.94+
+npm error gyp ERR! command "~/.local/share/fnm/node-versions/v22.23.3/installation/bin/node" "~/.local/share/fnm/node-versions/v22.23.3/installation/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+npm error gyp ERR! cwd /workspace/orchestrator-bench/tools/synara-server/node_modules/node-pty
+npm error gyp ERR! node -v v22.23.3
+npm error gyp ERR! node-gyp -v v11.5.0
+npm error gyp ERR! not ok
+npm error A complete log of this run can be found in: ~/.npm/_logs/2026-10-19T17_23_12_626Z-debug-0.log
+
+real	0m21.601s
+user	0m16.565s
+sys	0m7.665s

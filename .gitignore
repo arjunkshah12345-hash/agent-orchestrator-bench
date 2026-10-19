@@ -1,0 +1,8 @@
+__pycache__/
+node_modules/
+.env*
+*.AppImage
+*.tar.gz
+tools/*
+!tools/orca-env.sh
+out/

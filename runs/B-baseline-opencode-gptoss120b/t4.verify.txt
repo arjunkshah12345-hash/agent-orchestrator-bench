@@ -1,0 +1,5 @@
+  "/workspace/orchestrator-bench/harness/../fixture/verify/t4_tests_quality.py", line 15, in <module>
+    assert os.path.exists(os.path.join(repo,"tests/test_stats.py")),"no tests/test_stats.py"
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: no tests/test_stats.py
+t4 FAIL

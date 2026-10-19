@@ -1,0 +1,24 @@
+{
+ "_worktree_setup_s": 0.037,
+ "t1": {
+  "agent_exit": 1,
+  "wall_s": 131.7,
+  "verified": false
+ },
+ "t2": {
+  "agent_exit": "timeout",
+  "wall_s": 400.0,
+  "verified": false
+ },
+ "_total_wall_s": 531.9,
+ "_merge": [
+  {
+   "branch": "t1",
+   "result": "clean"
+  },
+  {
+   "branch": "t2",
+   "result": "clean"
+  }
+ ]
+}

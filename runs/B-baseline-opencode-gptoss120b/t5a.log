@@ -1,0 +1,5 @@
+[0m
+> build · openai/gpt-oss-120b
+[0m
+[0m✱ [0mGlob "**/*.py"[90m 7 matches[0m
+[91m[1mError: [0mRate limit reached for model `openai/gpt-oss-120b` in organization `org_01jwp1xrzheaf82s1ywc6m0jzn` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7582, Requested 7518. Please try again in 53.25s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing

@@ -1,0 +1,157 @@
+[serve] running on orcad 0.1.0+7a87e80a2a8a
+[secrets] Orca's headless server is running from a temporary profile, so it stores credentials unencrypted and leaves the saved credential key and existing credentials untouched.
+[orcad-telemetry] {"event":"profile_state_authority_selected","backend":"sqlite","classification":"neither","authority_mode":"sqlite-established","runtime":"orcad","migrated":false}
+[orcad] orcad is bound to 0.0.0.0 and is reachable from the network. Anything that can reach this port can attempt pairing.
+Orca server ready
+Bound endpoint: ws://0.0.0.0:6768
+Advertised endpoint: ws://127.0.0.1:6768
+Build: 0.1.0+7a87e80a2a8a (4b30ebdb0899d439), Node 24.21.0 ABI 137
+Terminal daemon: live — PTY self-test passed (pty-spawn: healthy); terminals survive an orcad restart: yes
+Terminal process ceiling: off (disabled)
+Pairing unavailable: disabled_by_operator
+Pairing guidance: Restart without --no-pairing to create a client pairing offer.
+[agent-state-rules] download failed: HTTP 404
+addWorktree: failed to set branch.t3.base for /tmp/home-orca-cli/orca/workspaces/orca-repo/t3 Error: Command failed: git config --local --replace-all branch.t3.base refs/heads/main
+error: could not lock config file /tmp/orca-repo/.git/config: File exists
+
+    at genericNodeError (node:internal/errors:986:15)
+    at wrappedFn (node:internal/errors:540:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:526:24)
+    at maybeClose (node:internal/child_process:1141:16)
+    at Socket.<anonymous> (node:internal/child_process:498:11)
+    at Socket.emit (node:events:514:28)
+    at Pipe.<anonymous> (node:net:362:12) {
+  code: 255,
+  killed: false,
+  signal: null,
+  cmd: 'git config --local --replace-all branch.t3.base refs/heads/main',
+  stdout: '',
+  stderr: 'error: could not lock config file /tmp/orca-repo/.git/config: File exists\n'
+}
+addWorktree: failed to unset stale branch.t3.base for /tmp/home-orca-cli/orca/workspaces/orca-repo/t3 Error: Command failed: git config --local --unset-all branch.t3.base
+
+    at genericNodeError (node:internal/errors:986:15)
+    at wrappedFn (node:internal/errors:540:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:526:24)
+    at maybeClose (node:internal/child_process:1141:16)
+    at Socket.<anonymous> (node:internal/child_process:498:11)
+    at Socket.emit (node:events:514:28)
+    at Pipe.<anonymous> (node:net:362:12) {
+  code: 5,
+  killed: false,
+  signal: null,
+  cmd: 'git config --local --unset-all branch.t3.base',
+  stdout: '',
+  stderr: ''
+}
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[telemetry-cohort] classifier returned undefined { reason: 'store not initialized' }
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4 killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a
+[worktree-teardown] a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b killed runtime=1 provider=0 registry=1 structured=0
+[pty:history] Scheduled history delete for worktree a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ba6ffc998bcbbdc4/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/d6e1aec0318e12ab/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/fdeaa806644c60ef/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/55c160ee8ad42d69/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/ebbc8d953ac647de/bash_history fishSession=none
+[pty:history] worktreeId=a5c7bb39-37ed-4fce-9a9e-7a981e48387f::/tmp/home-orca-cli/orc... shell=bash histFile=/tmp/home-orca-cli/.config/orca/terminal-history/3e5ef0a3182a22da/bash_history fishSession=none

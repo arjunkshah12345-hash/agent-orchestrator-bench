@@ -1,0 +1,2 @@
+passes_on_correct=True mutants_killed=3/3 
+t4 PASS

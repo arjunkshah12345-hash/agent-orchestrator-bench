@@ -1,0 +1,14 @@
+ecent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "/tmp/tmpv77w51rs/r/_verify_hidden.py", line 2, in <module>
+    from shelf.slug import slugify
+ModuleNotFoundError: No module named 'shelf.slug'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
+
+t2 FAIL

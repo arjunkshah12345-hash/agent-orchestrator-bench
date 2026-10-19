@@ -1,0 +1,26 @@
+[387361:1019/101222.147630:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[387361:1019/101223.573613:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[387361:1019/101223.573720:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[387361:1019/101223.573740:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[387361:1019/101223.617884:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[387361:1019/101223.617992:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[387361:1019/101223.633372:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[387361:1019/101223.689888:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[387361:1019/101223.689924:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[387361:1019/101223.689935:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[387361:1019/101223.741594:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[387361:1019/101223.765347:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[387361:1019/101223.801309:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[387361:1019/101223.802813:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[387361:1019/101223.819280:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.login1.Manager.Inhibit: object_path= /org/freedesktop/login1: unknown error type: 
+[387582:1019/101223.824998:ERROR:gpu/ipc/client/command_buffer_proxy_impl.cc:285] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+[appimage-copy] Unpacking this AppImage in the background into /tmp/home-orca/.cache/orca/appimage
+[agent-state-rules] download failed: HTTP 404
+[secrets] Orca could not tell which keyring service this desktop uses, so secrets are stored unencrypted — even if a secret service is already running. Start Orca with --password-store=gnome-libsecret (or --password-store=kwallet6 on KDE) to name one.
+[skills] scan roots=21 present=0 walked=21 skills=0 ms=15 ids=home-codex,home-agents,home-claude,home-cursor,home-gemini,home-droid,home-continue,home-trae,home-grok,home-aug,home-zcode,home-codebuddy
+[updater] release feed fallback: current=1.4.230 includePrerelease=false → https://github.com/stablyai/orca/releases/latest/download
+[autoUpdater] Checking for update
+[autoUpdater] Generated new staging user ID: 4b8f56fb-249d-5d7a-a0ed-7df23dc9cb63
+[autoUpdater] Update for version 1.4.230 is not available (latest version: 1.4.230, downgrade is disallowed).
+[appimage-copy] Unpacked this AppImage in 2s
+[pty:history:gc] Skipped: live worktree set is empty

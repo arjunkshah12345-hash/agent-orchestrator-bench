@@ -1,0 +1,24 @@
+environment: line 2: bc: command not found
+environment: line 2: printf: orca-linux.AppImage: invalid number
+orca	download_rc=0	0.0s	254M	
+environment: line 2: bc: command not found
+environment: line 2: printf: superset-1.39.0-x86_64.AppImage: invalid number
+superset	download_rc=0	0.0s	444M	
+environment: line 2: bc: command not found
+environment: line 2: printf: emdash-x86_64.AppImage: invalid number
+emdash	download_rc=0	0.0s	222M	
+environment: line 2: bc: command not found
+environment: line 2: printf: OpenChamber-2.5.0-linux-x86_64.AppImage: invalid number
+openchamber	download_rc=0	0.0s	248M	
+environment: line 2: bc: command not found
+environment: line 2: printf: Paseo-x86_64.AppImage: invalid number
+paseo	download_rc=0	0.0s	161M	
+environment: line 2: bc: command not found
+environment: line 2: printf: Cloudroom-v110-x86_64.AppImage: invalid number
+cloudroom-gui	download_rc=0	0.0s	183M	
+environment: line 2: bc: command not found
+environment: line 2: printf: cloudroom-core-0.1.65-linux-x86_64.tar.gz: invalid number
+cloudroom-core	download_rc=0	0.0s	33M	
+environment: line 2: bc: command not found
+environment: line 2: printf: mux-0.31.0-x86_64-linux.AppImage: invalid number
+mux	download_rc=0	0.0s	293M	
