@@ -58,7 +58,7 @@ open(HERE + "/assets/data.js", "w").write("window.BENCH=" + json.dumps(bench, se
 json.dump(bench, open(HERE + "/assets/data.json", "w"), indent=1)
 
 # ---------- layout ----------
-NAV = [("index.html","Home"),("leaderboard.html","Feature assessment"),("reproduce.html","Reproduce"),("compare.html","Compare"),("methodology.html","Methodology"),("about.html","About / FAQ")]
+NAV = [("index.html","Home"),("leaderboard.html","Feature assessment"),("tiers.html","Tiers"),("reproduce.html","Reproduce"),("compare.html","Compare"),("methodology.html","Methodology"),("about.html","About / FAQ")]
 def page(fname, title, desc, body, depth=0, active=""):
     r = "../" * depth
     nav = "".join(f'<a href="{r}{h}"' + (' aria-current="page"' if h == active else "") + f'>{esc(l)}</a>' for h, l in NAV)
@@ -76,7 +76,7 @@ def page(fname, title, desc, body, depth=0, active=""):
 <header class="top"><div class="wrap topin">
 <a class="logo" href="{r}index.html"><span class="mark" aria-hidden="true"></span>Harness Bench</a>
 <button class="mb o navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav id="nav" aria-label="Primary">{nav}</nav></div></header>
+<nav id="nav" aria-label="Primary">{nav}</nav><a class="gh" href="https://github.com/arjunkshah12345-hash/agent-orchestrator-bench" aria-label="GitHub repository: arjunkshah12345-hash/agent-orchestrator-bench" rel="noopener"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a></div></header>
 <main id="main">{body}</main>
 <footer class="foot"><div class="hatch" aria-hidden="true"></div><div class="wrap footin">
 <div><span class="lab">Harness Bench / 2026-10-19</span><p>A feature and orchestration benchmark, not a model leaderboard. The weighted feature assessment is editorial judgement from docs, repos and feature testing on one Linux box; the only measured results are stub-agent runs. No real-model task runs were scored.</p></div>
@@ -95,6 +95,15 @@ def write(path, s):
     assert "\u2014" not in s, path + " contains an em dash"
     p = HERE + "/" + path; os.makedirs(os.path.dirname(p), exist_ok=True); open(p, "w").write(s)
 
+# ---------- TIERS ----------
+TIERS = [("S", 90, "90 and up"), ("A", 75, "75 to 89.9"), ("B", 70, "70 to 74.9"), ("C", 60, "60 to 69.9"), ("D", 0, "below 60")]
+def tier_of(v): return next(k for k, c, _ in TIERS if v >= c)
+TL = {k: [t for t in tools if tier_of(t["score"]) == k] for k, _, _ in TIERS}
+def chips(ts, r=""):
+    return "".join(f'<a class="chip" href="{r}tools/{t["id"]}.html"><b>{esc(t["short"])}</b><span>{t["score"]:.1f}</span>' + (f'<em title="Score range crosses tiers">{tier_of(t["range"][0])} to {tier_of(t["range"][1])}</em>' if tier_of(t["range"][0]) != tier_of(t["range"][1]) else "") + '</a>' for t in ts)
+def tierrows(r=""):
+    return "".join(f'<div class="tier t{k}"><div class="tk"><canvas class="tband" data-tier="{i}" aria-hidden="true"></canvas><b>{k}</b><span class="lab">{c}</span></div><div class="tchips">{chips(TL[k], r) or "<span class=lab>none</span>"}</div></div>' for i, (k, _, c) in enumerate(TIERS))
+TNOTE = '<p class="note"><b>Feature-assessment tier list, not a performance ranking.</b> Tiers come from the weighted feature assessment (docs, repos, feature testing). Only Orca and Claude Squad were run end-to-end, and only with stub agents. A chip marked "B to A" has a score range that crosses tiers because some criteria had no evidence.</p>'
 # ---------- HOME ----------
 cs_runs = lane["Claude Squad"]; or_runs = lane["Orca (orca serve CLI)"]
 orv = sum(r["verified"] for r in or_runs); csv_ = sum(r["verified"] for r in cs_runs)
@@ -124,7 +133,7 @@ take = [
  ("No real-model results yet", "No Claude, Codex, Cursor or Grok CLI was logged in. A ready-to-run real-agent round is in the repo; nothing from it is reported as a result."),
 ]
 tk = "".join(f'<li><span class="lab">{n:02d}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for n, (a, b) in enumerate(take, 1))
-home = f"""<section class="hero"><div class="dots" aria-hidden="true"></div><div class="wrap heroin">
+home = f"""<section class="hero"><canvas class="field" id="heroField" aria-hidden="true"></canvas><div class="wrap heroin">
 <div class="herotext"><span class="lab">Feature + orchestration benchmark / not a model leaderboard / 2026-10-19</span>
 <h1>There's no universal winner.</h1>
 <p class="lede">We tested how agent orchestrators run Claude Code, Codex and friends in parallel. On Linux, with a stub agent, Orca launched six agents in under 2 s against 11 to 12 s for Claude Squad, and used about ten times the memory. Which matters depends on your machine and workflow.</p>
@@ -135,6 +144,8 @@ home = f"""<section class="hero"><div class="dots" aria-hidden="true"></div><div
 {sec("Key takeaways", "What the data says", f'<ol class="takes">{tk}</ol>')}
 {band()}
 {sec("Secondary research / weighted feature assessment", "Top 3 by assessed features", f'{NOTE}<div class="podium">{podium}</div><p class="cap">Assessment from docs, repos and feature testing. The range shows the score if every unevidenced criterion were 0 or 5. <a href="leaderboard.html">All 13 tools</a>.</p>')}
+{band()}
+{sec("Tier list / feature assessment", "Tiers at a glance", f'<div class="tiers mini">{tierrows()}</div><p class="cap">Feature-assessment tiers, not a performance ranking. <a href="tiers.html">Cutoffs and notes</a>.</p>')}
 {band()}
 {sec("How the stub test works", "6 parallel worktrees, one merge", '<div class="split"><figure class="heroart"><canvas id="heroArt" aria-hidden="true"></canvas><figcaption class="lab">6 parallel worktrees: 5 clean merges, 1 designed conflict (t5b). Ordered Bayer dither.</figcaption></figure><div><p class="body">Each orchestrator launches six sessions of a deterministic stub agent in isolated worktrees. The stub waits, then writes a reference solution; hidden verifiers decide pass or fail. Two tasks edit the same function on purpose, so one merge conflicts by design. This isolates what the orchestrator controls: launch, isolation, crash containment and footprint.</p><p class="body">Raw logs for every number are in the repo under runs/.</p><a class="mb o" href="reproduce.html">Rerun it yourself</a></div></div>')}
 {band()}
@@ -176,6 +187,15 @@ lbody = f"""<section class="phead"><div class="wrap"><span class="lab">Secondary
 {sec("Landscape, not scored", f"{len(unscored)} more tools we checked", f'<div class="tablewrap"><table><thead><tr><th scope="col">Tool</th><th scope="col">Category</th><th scope="col">License</th><th scope="col">Why no score</th></tr></thead><tbody>{ul}</tbody></table></div>')}
 """
 write("leaderboard.html", page("leaderboard.html", "Weighted feature assessment / Harness Bench", "Weighted feature assessment of 13 agent orchestrators from docs and feature testing; not a measured performance leaderboard.", lbody, 0, "leaderboard.html"))
+
+
+tbody = f"""<section class="phead"><div class="wrap"><span class="lab">Tier list / weighted feature assessment</span><h1>Feature-assessment tiers</h1>
+<p class="lede">The {len(tools)} scored orchestrators grouped by their weighted feature assessment. Cutoffs: S 90 and up, A 75 to 89.9, B 70 to 74.9, C 60 to 69.9, D below 60. The score is the midpoint of each tool's range.</p></div></section>
+{band()}
+{sec("Tiers", "", TNOTE + f'<div class="tiers">{tierrows()}</div><p class="cap">Click a tool for its criteria, evidence and range. Cutoffs are fixed round numbers chosen before grouping; a tool one point either side of a cutoff is effectively tied with its neighbour.</p>')}
+"""
+write("tiers.html", page("tiers.html", "Feature-assessment tier list / Harness Bench", "S to D tiers from the weighted feature assessment of 13 agent orchestrators; not a performance ranking.", tbody, 0, "tiers.html"))
+
 
 # ---------- TOOL PAGES ----------
 FL = [("platforms","Platforms"),("agents","Supported agents"),("parallel","Parallelism"),("isolation","Isolation"),("review","Review, merge, PR"),("remote","Remote, cloud, mobile"),("mcp","MCP"),("cost","Cost visibility"),("models","Model choice"),("setup","Setup")]
