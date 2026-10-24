@@ -1,0 +1,17 @@
+Realm lane A, Linux (author-run; conflict of interest: run by Realm's author, Carlton Aikins)
+
+Host:      Apple M4 Pro MacBook Pro, 14 cores, 24 GB, macOS 27.2 (Darwin 27.2.0)
+Linux:     Docker Desktop VM (linuxkit 6.10.14, aarch64), 14 vCPU and 7.65 GB given to the VM
+Container: python:3 image (Debian GNU/Linux 13 trixie), Python 3.14.4, git 2.47.3
+Node:      v22.23.2 linux-arm64 from nodejs.org, mounted read-only (REALM_NODE)
+Realm:     github.com/31Carlton7/realm commit 119c67a1 (v2.4.0 + the `realm` CLI), apps/server/dist built on the host
+           (`pnpm --filter @realm/server build`) and mounted read-only; node-pty used its linux-arm64 prebuild.
+Command:   docker run --rm -v <realm>:/realm:ro -v <bench>:/bench -v <node>:/cache:ro -w /bench \
+             -e REALM_JS=/realm/apps/server/dist/realm.js -e REALM_NODE=/cache/node-v22.23.2-linux-arm64/bin/node \
+             python:3 bash -c 'python3 harness/realm_suite.py'
+Harness:   harness/realm_run.py boots its own `realm serve` on a fresh scratch REALM_HOME per run (REALM_ENABLE_FAKE_AGENT=1,
+           so nothing can reach a billed model), launches the 6 tasks with one `realm run <repo> --worktree <task> -- <stub>`
+           each, records `realm wait` completion, then verifies 14 s after launch like orca_run.py, and stops the server.
+Sampler:   harness/sampler.py (the bench's own), PAT = the server bundle's directory | benchagent.
+Load:      each run records load_avg_at_start; the VM was otherwise idle (load < 1.5).
+Differences from the original box (8 vCPU x86_64 VM, 16 GB): different CPU architecture and speed, more cores, a container.

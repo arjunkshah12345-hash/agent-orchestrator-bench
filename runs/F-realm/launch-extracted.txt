@@ -1,0 +1,30 @@
+realm: first window 1.07 s; 951 MB over 7 processes 12 s later
+    227 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=renderer --enable-crash-reporter=96ad5a98-3cd2-49d3-a630-459c5c7f2eee,no_channel --user-d
+    187 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --no-sandbox
+    163 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/dist/main.js
+    159 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --ozone-platform=x11 --enable-crash-r
+     88 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-ty
+     63 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=zygote --no-sandbox
+     63 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=zygote --no-zygote-sandbox --no-sandbox
+orca: first window 1.73 s; 918 MB over 6 processes 12 s later
+    322 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --no-sandbox
+    217 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=renderer --crashpad-handler-pid=6025 --enable-crash-reporter=b7eedae7-519b-4b97-be80-82
+    165 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=gpu-process --no-sandbox --ozone-platform=x11 --crashpad-handler-pid=6025 --enable-cras
+     93 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-
+     61 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=zygote --no-sandbox
+     61 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=zygote --no-zygote-sandbox --no-sandbox
+realm: first window 1.07 s; 954 MB over 7 processes 12 s later
+    227 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=renderer --enable-crash-reporter=c3a5cfc0-18d1-45f6-a898-b47b5bf5c97e,no_channel --user-d
+    188 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --no-sandbox
+    163 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/dist/main.js
+    159 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --ozone-platform=x11 --enable-crash-r
+     88 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-ty
+     64 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=zygote --no-sandbox
+     64 MB  /home/runner/work/_temp/bench/tools/realm-x/squashfs-root/realm --type=zygote --no-zygote-sandbox --no-sandbox
+orca: first window 1.73 s; 902 MB over 6 processes 12 s later
+    307 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --no-sandbox
+    217 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=renderer --crashpad-handler-pid=6426 --enable-crash-reporter=78826254-6892-4bf8-9b0f-c4
+    164 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=gpu-process --no-sandbox --ozone-platform=x11 --crashpad-handler-pid=6426 --enable-cras
+     93 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-
+     61 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=zygote --no-zygote-sandbox --no-sandbox
+     61 MB  /home/runner/work/_temp/bench/tools/orca-x/squashfs-root/orca-ide --type=zygote --no-sandbox

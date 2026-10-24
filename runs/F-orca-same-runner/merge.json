@@ -1,0 +1,38 @@
+{
+ "merges": [
+  {
+   "branch": "t1",
+   "result": "clean"
+  },
+  {
+   "branch": "t2",
+   "result": "clean"
+  },
+  {
+   "branch": "t3",
+   "result": "clean"
+  },
+  {
+   "branch": "t4",
+   "result": "clean"
+  },
+  {
+   "branch": "t5a",
+   "result": "clean"
+  },
+  {
+   "branch": "t5b",
+   "result": "CONFLICT",
+   "files": [
+    "shelf/config.py"
+   ]
+  }
+ ],
+ "post_merge_verify": {
+  "t1": true,
+  "t2": true,
+  "t3": true,
+  "t4": true,
+  "t5a": true
+ }
+}

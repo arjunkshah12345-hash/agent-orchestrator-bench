@@ -1,0 +1,327 @@
+{
+ "sessions": {
+  "t1": {
+   "worktree_create_s": 1.67,
+   "terminal_create_s": 0.58,
+   "path": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t1",
+   "terminal_ok": true,
+   "since_start_s": 2.25,
+   "verified": true,
+   "partial_file": false,
+   "branch": "t1"
+  },
+  "t4": {
+   "worktree_create_s": 1.73,
+   "terminal_create_s": 0.72,
+   "path": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t4",
+   "terminal_ok": true,
+   "since_start_s": 2.46,
+   "verified": true,
+   "partial_file": false,
+   "branch": "t4"
+  },
+  "t3": {
+   "worktree_create_s": 1.73,
+   "terminal_create_s": 0.81,
+   "path": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t3",
+   "terminal_ok": true,
+   "since_start_s": 2.54,
+   "verified": true,
+   "partial_file": false,
+   "branch": "t3"
+  },
+  "t5a": {
+   "worktree_create_s": 1.82,
+   "terminal_create_s": 0.76,
+   "path": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a",
+   "terminal_ok": true,
+   "since_start_s": 2.58,
+   "verified": true,
+   "partial_file": false,
+   "branch": "t5a"
+  },
+  "t5b": {
+   "worktree_create_s": 1.95,
+   "terminal_create_s": 0.65,
+   "path": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b",
+   "terminal_ok": true,
+   "since_start_s": 2.6,
+   "verified": true,
+   "partial_file": false,
+   "branch": "t5b"
+  },
+  "t2": {
+   "worktree_create_s": 1.95,
+   "terminal_create_s": 0.72,
+   "path": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t2",
+   "terminal_ok": true,
+   "since_start_s": 2.66,
+   "verified": true,
+   "partial_file": false,
+   "branch": "t2"
+  }
+ },
+ "all_launched_s": 2.67,
+ "total_wall_s": 17.65,
+ "terminals": {
+  "id": "8dc6def9-6768-441d-8daf-8f347f7b9332",
+  "ok": true,
+  "result": {
+   "terminals": [
+    {
+     "handle": "term_8d888a10-a68d-4186-8eaa-66ff5395337e",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1@@6cccddb1",
+     "incarnationId": "c29a806b-dc1c-45bc-808a-64e1697c8d1b",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t1",
+     "branch": "refs/heads/t1",
+     "tabId": "b2152796-f42e-4404-91da-762163d11ae2",
+     "leafId": "cab499fc-9aa2-4ea4-aa38-2c79b19b7c40",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861710656,
+     "preview": "runner@runnervm8k3b6:~/orca/workspaces/orca-repo/t1$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_64bd6fb2-db2c-49ea-93e5-c263cf4d9e20",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3@@38b033b8",
+     "incarnationId": "96f991f1-a5bb-4bb6-82a6-d357862d6c41",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t3",
+     "branch": "refs/heads/t3",
+     "tabId": "86df1eae-2a7c-4404-8e19-12bde6eaa8ab",
+     "leafId": "ea8e8148-d60c-4d26-8b8e-7e5d12654adf",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861710667,
+     "preview": "runner@runnervm8k3b6:~/orca/workspaces/orca-repo/t3$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_523a12c3-6693-4a0d-8ac7-c0a9bd4f7164",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4@@f8e1685a",
+     "incarnationId": "c09453fc-b26f-4cad-b619-87328119d313",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t4",
+     "branch": "refs/heads/t4",
+     "tabId": "f0cae5f3-e503-463f-8c25-6e6e269afc28",
+     "leafId": "cd8f9a84-926a-4e35-bfd8-6b9383e87198",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861710722,
+     "preview": "runner@runnervm8k3b6:~/orca/workspaces/orca-repo/t4$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_8bef6012-19ed-4fe3-9885-996ced00be7a",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a@@d726004f",
+     "incarnationId": "c4d2593f-9215-4811-a55e-85fd4f2dae66",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a",
+     "branch": "refs/heads/t5a",
+     "tabId": "f981b39d-62ea-4276-8bef-59c0d717ca0a",
+     "leafId": "29c4cc56-b78f-4089-a84f-4bc64d10ea0a",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861710811,
+     "preview": "runner@runnervm8k3b6:~/orca/workspaces/orca-repo/t5a$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_de07a11d-6b94-4300-b7b9-db2c7fc1e84c",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2@@62af1abe",
+     "incarnationId": "44f67d0e-860e-4ea8-bbe0-54aa3c619527",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t2",
+     "branch": "refs/heads/t2",
+     "tabId": "c0ace212-a114-475c-a16c-5bfdb1ba37ae",
+     "leafId": "ee08bee2-f2a9-4c93-b6a9-88baedf4b9f9",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861711046,
+     "preview": "runner@runnervm8k3b6:~/orca/workspaces/orca-repo/t2$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_ba394b33-bf7d-41e5-9f0b-4d850288f060",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b@@72ac4879",
+     "incarnationId": "542ad410-9ae3-404d-b40a-6e11246f14f0",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b",
+     "branch": "refs/heads/t5b",
+     "tabId": "7e398266-3696-4ba2-84f1-660a8ee56f59",
+     "leafId": "24980dd3-9d7d-4839-9033-0435e33c2b8d",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861711054,
+     "preview": "runner@runnervm8k3b6:~/orca/workspaces/orca-repo/t5b$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_36daf852-131a-4e4a-a0c8-daa640697657",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1@@58aae90b",
+     "incarnationId": "f2d0ec6f-f140-456b-ba41-8617b64e92f9",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t1",
+     "branch": "refs/heads/t1",
+     "tabId": "9f524b1d-e4a9-46be-8fa4-5c359ee886c7",
+     "leafId": "c0bcbcca-92c1-4c7f-a6dc-b70798496f2e",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861721362,
+     "preview": ". Fix both bugs. page 0 or negative pages must return []. Do not touch other files. Run the existing tests with: python3 -m unittest discover -s tests -t .'\n[benchagent] task t1 cwd /tmp/home-orca-cli/orca/workspaces/orca-repo/t1\n[benchagent] done\nrunner@runnervm8k3b6:~/orca/workspaces/orca-repo/t1$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_f03f1d69-b24e-4d8f-bca4-d7a210297284",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4@@6d9d7e4a",
+     "incarnationId": "21034804-d982-4513-bd1f-5478a599404f",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t4",
+     "branch": "refs/heads/t4",
+     "tabId": "df772c71-064d-4884-ab8e-73d2d37bc799",
+     "leafId": "dee0b375-df24-4067-a45b-1f0ee677fdde",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861721514,
+     "preview": "clamp (below, inside, above, lo>hi error) and empty-input errors. Do not modify shelf/stats.py. Tests must pass: python3 -m unittest discover -s tests -t .'\n[benchagent] task t4 cwd /tmp/home-orca-cli/orca/workspaces/orca-repo/t4\n[benchagent] done\nrunner@runnervm8k3b6:~/orca/workspaces/orca-repo/t4$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_c921bdfe-6a3f-4fcc-b474-361e6b039202",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3@@74c0ab68",
+     "incarnationId": "3f9779e0-b25b-46f7-94f3-83b0dc20c38c",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t3",
+     "branch": "refs/heads/t3",
+     "tabId": "db79de93-63f5-4dbd-aabb-3723fd2b5382",
+     "leafId": "140ae33a-8874-481d-b13e-b49e0b577528",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861721587,
+     "preview": "ppears once. Public function names and output must stay byte-for-byte identical. Existing tests must still pass: python3 -m unittest discover -s tests -t .'\n[benchagent] task t3 cwd /tmp/home-orca-cli/orca/workspaces/orca-repo/t3\n[benchagent] done\nrunner@runnervm8k3b6:~/orca/workspaces/orca-repo/t3$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_739b5a0e-8c78-4f85-94be-83612a98f9f7",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a@@73de86f7",
+     "incarnationId": "71d82e3e-a1ec-4dc8-a4d1-0c4110b4986c",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a",
+     "branch": "refs/heads/t5a",
+     "tabId": "a4212cde-722b-4c9c-acee-7519d2d493aa",
+     "leafId": "6d135ec0-8d1e-46e6-9a56-20585bd6f777",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861721621,
+     "preview": "emp/bench/harness/benchagent.py 'Change: in shelf/config.py make the default '\\''retries'\\'' value 5 instead of 3. Update tests/test_smoke.py if needed.'\n[benchagent] task t5a cwd /tmp/home-orca-cli/orca/workspaces/orca-repo/t5a\n[benchagent] done\nrunner@runnervm8k3b6:~/orca/workspaces/orca-repo/t5a$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_7a9dc072-8477-4608-9598-341abee95ffe",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b@@df58d591",
+     "incarnationId": "f5f2c6e5-940a-45fa-9ed4-ab6c401281bf",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b",
+     "branch": "refs/heads/t5b",
+     "tabId": "670520eb-4f75-4783-a266-f7e7f5413d47",
+     "leafId": "757a8173-e130-42a9-8548-d3525602d7e9",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861721678,
+     "preview": "env=\"dev\" to load_config(overrides=None, env=\"dev\"); the returned dict must include key '\\''env'\\'' set to that value (overrides may still override it).'\n[benchagent] task t5b cwd /tmp/home-orca-cli/orca/workspaces/orca-repo/t5b\n[benchagent] done\nrunner@runnervm8k3b6:~/orca/workspaces/orca-repo/t5b$",
+     "executionHostId": "local"
+    },
+    {
+     "handle": "term_7af5213d-3356-45df-bd1b-6203ecb6b39c",
+     "ptyId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2@@8944922f",
+     "incarnationId": "4a4d090c-e6e5-49ce-b147-0e662fd3e271",
+     "orphaned": false,
+     "worktreeId": "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2",
+     "worktreePath": "/tmp/home-orca-cli/orca/workspaces/orca-repo/t2",
+     "branch": "refs/heads/t2",
+     "tabId": "ede0a6ed-8a62-4fa7-a44f-fd9ab25dc87c",
+     "leafId": "804f980b-3640-46b5-bdd4-291ab1b99563",
+     "title": null,
+     "connected": true,
+     "writable": true,
+     "lastOutputAt": 1792861721736,
+     "preview": "ax_len is given, truncate to max_len characters then strip any trailing '\\''-'\\''. slugify('\\''???'\\'') returns '\\'''\\''. Only create/modify shelf/slug.py.'\n[benchagent] task t2 cwd /tmp/home-orca-cli/orca/workspaces/orca-repo/t2\n[benchagent] done\nrunner@runnervm8k3b6:~/orca/workspaces/orca-repo/t2$",
+     "executionHostId": "local"
+    }
+   ],
+   "hostScope": {
+    "hostIds": [
+     "local"
+    ],
+    "omittedHostIds": []
+   },
+   "topologyRevisions": {
+    "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t1": 12,
+    "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t3": 12,
+    "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t4": 12,
+    "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a": 12,
+    "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t2": 12,
+    "ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b": 12
+   },
+   "totalCount": 12,
+   "truncated": false
+  },
+  "_meta": {
+   "runtimeId": "d7a200f4-c772-49dc-b623-13f0e31c7a04"
+  }
+ },
+ "worktree_list": [
+  [
+   "refs/heads/main",
+   "/tmp/orca-repo"
+  ],
+  [
+   "refs/heads/t1",
+   "/tmp/home-orca-cli/orca/workspaces/orca-repo/t1"
+  ],
+  [
+   "refs/heads/t2",
+   "/tmp/home-orca-cli/orca/workspaces/orca-repo/t2"
+  ],
+  [
+   "refs/heads/t3",
+   "/tmp/home-orca-cli/orca/workspaces/orca-repo/t3"
+  ],
+  [
+   "refs/heads/t4",
+   "/tmp/home-orca-cli/orca/workspaces/orca-repo/t4"
+  ],
+  [
+   "refs/heads/t5a",
+   "/tmp/home-orca-cli/orca/workspaces/orca-repo/t5a"
+  ],
+  [
+   "refs/heads/t5b",
+   "/tmp/home-orca-cli/orca/workspaces/orca-repo/t5b"
+  ]
+ ]
+}

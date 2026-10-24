@@ -1,0 +1,213 @@
+{
+ "load_avg_at_start": [
+  2.2,
+  1.4,
+  0.8
+ ],
+ "realm_serve_ready_s": 0.63,
+ "idle_rss_mb": 154,
+ "repo_add": {
+  "ok": true,
+  "code": 0,
+  "result": {
+   "spaceId": "01M5PCSWKQAFN8SK9YPRHY273B",
+   "projectId": "01M5PCSWKRV8QVHBNQ1G94C5PR",
+   "environmentId": "01M5PCSWKSTP1HNEB6RQ9CETA8",
+   "path": "/tmp/realm-repo"
+  }
+ },
+ "sessions": {
+  "t5b": {
+   "run_s": 0.54,
+   "path": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t5b",
+   "terminal_id": "01M5PCSX3P52D1X3P9VFK79FYV",
+   "run_ok": true,
+   "since_start_s": 0.55,
+   "verified": true,
+   "partial_file": false,
+   "branch": "realm/t5b",
+   "reported": {
+    "running": false,
+    "exitCode": 0,
+    "signal": null
+   }
+  },
+  "t5a": {
+   "run_s": 0.54,
+   "path": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t5a",
+   "terminal_id": "01M5PCSX4GMQF9YRDRJGRRXRVK",
+   "run_ok": true,
+   "since_start_s": 0.55,
+   "verified": true,
+   "partial_file": false,
+   "branch": "realm/t5a",
+   "reported": {
+    "running": false,
+    "exitCode": 0,
+    "signal": null
+   }
+  },
+  "t3": {
+   "run_s": 0.6,
+   "path": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t3",
+   "terminal_id": "01M5PCSX666SSMFV3MDYGA74T9",
+   "run_ok": true,
+   "since_start_s": 0.6,
+   "verified": true,
+   "partial_file": false,
+   "branch": "realm/t3",
+   "reported": {
+    "running": false,
+    "exitCode": 0,
+    "signal": null
+   }
+  },
+  "t2": {
+   "run_s": 0.69,
+   "path": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t2",
+   "terminal_id": "01M5PCSX8N7PY0XNY7PVT75HW2",
+   "run_ok": true,
+   "since_start_s": 0.69,
+   "verified": true,
+   "partial_file": false,
+   "branch": "realm/t2",
+   "reported": {
+    "running": false,
+    "exitCode": 0,
+    "signal": null
+   }
+  },
+  "t1": {
+   "run_s": 0.72,
+   "path": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t1",
+   "terminal_id": "01M5PCSX9GZCAKG25W155E6GJN",
+   "run_ok": true,
+   "since_start_s": 0.72,
+   "verified": true,
+   "partial_file": false,
+   "branch": "realm/t1",
+   "reported": {
+    "running": false,
+    "exitCode": 0,
+    "signal": null
+   }
+  },
+  "t4": {
+   "run_s": 0.73,
+   "path": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t4",
+   "terminal_id": "01M5PCSXA3ZMCVZZ1E84AMABM3",
+   "run_ok": true,
+   "since_start_s": 0.74,
+   "verified": true,
+   "partial_file": false,
+   "branch": "realm/t4",
+   "reported": {
+    "running": false,
+    "exitCode": 0,
+    "signal": null
+   }
+  }
+ },
+ "all_launched_s": 0.74,
+ "all_exited_s": 11.14,
+ "wait_exit_code": 0,
+ "verify_s": 0.94,
+ "total_wall_s": 15.68,
+ "terminals": [
+  {
+   "terminalId": "01M5PCSX3P52D1X3P9VFK79FYV",
+   "spaceId": "01M5PCSWKQAFN8SK9YPRHY273B",
+   "cwd": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t5b",
+   "command": "env STUB_SLEEP=10 STUB_CRASH= python3 /home/runner/work/_temp/bench/harness/benchagent.py 'Feature: in shelf/config.py add a keyword argument env=\"dev\" to load_config(overrides=None, env=\"dev\"); the returned dict must include key '\\''env'\\'' set to that value (overrides may still override it).'",
+   "running": false,
+   "exitCode": 0,
+   "signal": null,
+   "startedAt": 1792826733687,
+   "exitedAt": 1792826744091
+  },
+  {
+   "terminalId": "01M5PCSX4GMQF9YRDRJGRRXRVK",
+   "spaceId": "01M5PCSWKQAFN8SK9YPRHY273B",
+   "cwd": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t5a",
+   "command": "env STUB_SLEEP=10 STUB_CRASH= python3 /home/runner/work/_temp/bench/harness/benchagent.py 'Change: in shelf/config.py make the default '\\''retries'\\'' value 5 instead of 3. Update tests/test_smoke.py if needed.'",
+   "running": false,
+   "exitCode": 0,
+   "signal": null,
+   "startedAt": 1792826733713,
+   "exitedAt": 1792826744068
+  },
+  {
+   "terminalId": "01M5PCSX666SSMFV3MDYGA74T9",
+   "spaceId": "01M5PCSWKQAFN8SK9YPRHY273B",
+   "cwd": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t3",
+   "command": "env STUB_SLEEP=10 STUB_CRASH= python3 /home/runner/work/_temp/bench/harness/benchagent.py 'Refactor: shelf/report.py has duplicated formatting logic in book_line and loan_line. Extract one shared helper (e.g. _fmt_row(title, who, year)) so the column formatting (.ljust(30)[:30], .ljust(20)[:20], rjust(4)) appears once. Public function names and output must stay byte-for-byte identical. Existing tests must still pass: python3 -m unittest discover -s tests -t .'",
+   "running": false,
+   "exitCode": 0,
+   "signal": null,
+   "startedAt": 1792826733766,
+   "exitedAt": 1792826744134
+  },
+  {
+   "terminalId": "01M5PCSX8N7PY0XNY7PVT75HW2",
+   "spaceId": "01M5PCSWKQAFN8SK9YPRHY273B",
+   "cwd": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t2",
+   "command": "env STUB_SLEEP=10 STUB_CRASH= python3 /home/runner/work/_temp/bench/harness/benchagent.py 'Feature: add a new module shelf/slug.py with slugify(text, max_len=None). Lowercase, replace any run of non-alphanumeric characters with a single '\\''-'\\'', strip leading/trailing '\\''-'\\''. If max_len is given, truncate to max_len characters then strip any trailing '\\''-'\\''. slugify('\\''???'\\'') returns '\\'''\\''. Only create/modify shelf/slug.py.'",
+   "running": false,
+   "exitCode": 0,
+   "signal": null,
+   "startedAt": 1792826733846,
+   "exitedAt": 1792826744184
+  },
+  {
+   "terminalId": "01M5PCSX9GZCAKG25W155E6GJN",
+   "spaceId": "01M5PCSWKQAFN8SK9YPRHY273B",
+   "cwd": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t1",
+   "command": "env STUB_SLEEP=10 STUB_CRASH= python3 /home/runner/work/_temp/bench/harness/benchagent.py 'Bug fix: in shelf/paging.py, paginate() is documented as 1-indexed but returns wrong items, and page_count() drops the final partial page. Fix both bugs. page 0 or negative pages must return []. Do not touch other files. Run the existing tests with: python3 -m unittest discover -s tests -t .'",
+   "running": false,
+   "exitCode": 0,
+   "signal": null,
+   "startedAt": 1792826733872,
+   "exitedAt": 1792826744217
+  },
+  {
+   "terminalId": "01M5PCSXA3ZMCVZZ1E84AMABM3",
+   "spaceId": "01M5PCSWKQAFN8SK9YPRHY273B",
+   "cwd": "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t4",
+   "command": "env STUB_SLEEP=10 STUB_CRASH= python3 /home/runner/work/_temp/bench/harness/benchagent.py 'Write tests: shelf/stats.py has no tests. Create tests/test_stats.py using unittest covering mean, median (odd and even length, unsorted input), clamp (below, inside, above, lo>hi error) and empty-input errors. Do not modify shelf/stats.py. Tests must pass: python3 -m unittest discover -s tests -t .'",
+   "running": false,
+   "exitCode": 0,
+   "signal": null,
+   "startedAt": 1792826733895,
+   "exitedAt": 1792826744214
+  }
+ ],
+ "worktree_list": [
+  [
+   "realm/t5b",
+   "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t5b"
+  ],
+  [
+   "realm/t5a",
+   "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t5a"
+  ],
+  [
+   "realm/t3",
+   "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t3"
+  ],
+  [
+   "realm/t2",
+   "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t2"
+  ],
+  [
+   "realm/t1",
+   "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t1"
+  ],
+  [
+   "realm/t4",
+   "/tmp/realm-bench-home-hbxdy0o9/worktrees/01M5PCSWKQAFN8SK9YPRHY273B/t4"
+  ]
+ ],
+ "server_stopped": true,
+ "realm_home": "/tmp/realm-bench-home-hbxdy0o9",
+ "platform": "Linux x86_64 6.17.0-1022-azure"
+}

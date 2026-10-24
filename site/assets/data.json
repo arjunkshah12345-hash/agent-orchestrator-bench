@@ -1,8 +1,73 @@
 {
  "tools": [
   {
-   "id": "orca",
+   "id": "realm",
    "rank": 1,
+   "name": "Realm",
+   "short": "Realm",
+   "maker": "Carlton Aikins (31Carlton7)",
+   "url": "https://realm.computer",
+   "repo": "31Carlton7/realm",
+   "license": "MIT (LICENSE added 2026-10-24, #221)",
+   "price": "Free; BYO subscriptions (each agent CLI signs in with your own account; no Realm account)",
+   "status": "Driven end-to-end",
+   "score": 94.0,
+   "coverage": 100,
+   "crit": {
+    "A": 5,
+    "B": 5,
+    "C": 5,
+    "D": 5,
+    "E": 5,
+    "F": 3,
+    "G": 5,
+    "H": 5,
+    "I": 5
+   },
+   "stars": "116",
+   "issues": "19",
+   "release": "v2.5.0",
+   "release_date": "2026-10-24",
+   "why": "Driven headless end-to-end like Orca, through a command that ships inside the app: on the same runner, a quarter of Orca's memory under load (about 340 MB for six sessions), three times its launch speed, a server ready in 0.6 s, and a Linux AppImage that opens faster with no account wall. Worktrees plus port blocks plus an optional Seatbelt sandbox, a full ship/PR flow, a remote runtime with access tokens, and phone pairing even with a headless server. MIT-licensed. Young (two months, few stars) but shipping several releases a week with no open issues. Self-submitted by its author; measured on a GitHub runner with Orca beside it.",
+   "who": "Anyone who wants every agent CLI in one window on a Mac or Linux, and anyone who wants to script parallel agents from a shell (`realm serve` + `realm run`, shipped inside the app).",
+   "pros": [
+    "Headless server and CLI inside the app: six worktree-isolated sessions launched in 0.51 to 0.57 s, 342 to 345 MB peak for six; Orca on the same runner 2.58 to 2.67 s and 1227 to 1347 MB (author-run, see note)",
+    "Linux AppImage opens in 3.32 s with 968 MB and no account wall (Orca on the same runner: 4.1 s, 922 MB)",
+    "Worktree plus port block per session, optional Seatbelt sandbox, crash isolation reported per session (signal and exit code)",
+    "13 agent CLIs through Agent SDK, Codex app-server and one ACP adapter; ship-to-PR and PR review in app"
+   ],
+   "cons": [
+    "Young: about two months old, with few stars at the time of writing",
+    "Linux and Windows builds are new (2.3), and the Linux numbers here are the author's own runs",
+    "The iPhone app is a TestFlight beta"
+   ],
+   "first_window": 3.32,
+   "rss": 968,
+   "facts": {
+    "platforms": "macOS Apple silicon (signed, notarized dmg/zip with in-app updates); Linux AppImage + deb and Windows exe on releases since 2.3; a headless server and the `realm` CLI ship inside every app at resources/bin from 2.5.0 and run on the app's own binary (no Node); Realm for iPhone (TestFlight)",
+    "agents": "Claude Code (Agent SDK), Codex (app-server), and Cursor, Gemini, OpenCode, GitHub Copilot, goose, Qwen Code, Grok, fx, DeepSeek, OpenHands, Hermes through one generic ACP adapter; any command line via `realm run` (stub proven here)",
+    "parallel": "Session per agent, optionally in its own worktree; teammates and sub-agents fanned out from a session across providers (agent_start / delegation); `realm run` launches N commands into N worktrees concurrently",
+    "isolation": "Git worktree per session or run under ~/Realm/worktrees, each with a reserved port block exported to its shells; optional per-space macOS Seatbelt sandbox for agents and terminals (not a container; network stays open)",
+    "review": "Changes pane (diffs grouped by kind), checkpoints with restore, commit + push + open PR as one action (workspace.ship), Code Review page for pull requests through the user's gh with reviewer runs",
+    "remote": "Strong: a remote runtime, `realm serve --listen`, over TLS, behind Tailscale Serve (`--tailscale`) or through an SSH tunnel, with revocable access tokens (stored hashed, rate-limited, browser origins refused); `--server` aims every `realm` command at it; `realm service install` keeps it running under systemd or launchd; Realm for iPhone pairs with a Mac or a headless server (`realm pair` draws the code in a terminal) through Realm's production relay, end-to-end encrypted. The iPhone app is a TestFlight beta (public link in Apple's beta review on 2026-10-24). No web client; no hosted cloud execution.",
+    "mcp": "Yes: one MCP gateway per session (Realm's agent, terminal, browser, docs and workspace tools) that also proxies third-party MCP servers without handing the agent their credentials",
+    "cost": "Partial: usage summaries, budgets and plan-limit readouts (usage.*, limits.get); depth not verified here",
+    "models": "Per agent; one picker across harnesses with effort and fast mode",
+    "setup": "Install the app (Mac dmg, Linux AppImage or deb, Windows installer); first run asks for an agent and a space name, sign-in optional, no Realm account. Headless: `<app>/resources/bin/realm serve`"
+   },
+   "hands_on": "v2.5.0 release, Linux AppImage on Xvfb: first window 3.32 s, 968 MB process tree, no account wall (Orca 1.4.230 on the same runner, same probe: 4.10 s, 922 MB). Driven end-to-end headless with the stub agent through the `realm` command the AppImage ships (`realm serve` + `realm run`, no Node, no display): 18/18 verified over 3 runs, 6 launched in 0.51 to 0.57 s, peak RSS 342 to 345 MB, server ready in 0.51 to 0.52 s (Orca on the same runner: 2.58 to 2.67 s, 1227 to 1347 MB, 3.24 to 3.34 s); crash isolation; merge 5/6. Run by Realm's author on a GitHub ubuntu-latest runner (runs/F-realm/environment.txt); earlier CI-build, container and macOS runs agree.",
+   "bugs": "The Linux and Windows builds are new (2.3); docs/platforms.md says what has run there (the Linux AppImage and deb on GitHub runners) and what has not. Found while measuring: the v2.5.0 Windows installer's server cannot load one of its packages (`pkce-challenge`) after install, so the installed Windows app does not start its server; the unpacked Windows build works, and a fix is being prepared. The iPhone app is a beta. README says 'in active development'.",
+   "notes": "Submitted by Realm's author, who also wrote the `realm` CLI, the remote runtime and the Linux packaging changes measured here. The numbers come from the published v2.5.0 release (2026-10-24), the first that ships `resources/bin/realm`, checked against the sha256 it records. GitHub figures fetched after the bench snapshot.",
+   "range": [
+    94.0,
+    94.0
+   ],
+   "validation": "Stub end-to-end",
+   "measured": "Stub run x3, launch probe (author-run, GitHub runner)"
+  },
+  {
+   "id": "orca",
+   "rank": 2,
    "name": "Orca",
    "short": "Orca",
    "maker": "Stably AI (stablyai)",
@@ -66,7 +131,7 @@
   },
   {
    "id": "t3",
-   "rank": 2,
+   "rank": 3,
    "name": "T3 Code",
    "short": "T3 Code",
    "maker": "Theo Browne / Ping Labs (pingdotgg)",
@@ -130,7 +195,7 @@
   },
   {
    "id": "synara",
-   "rank": 3,
+   "rank": 4,
    "name": "Synara",
    "short": "Synara",
    "maker": "Emanuele Di Pietro (@emanueledpt)",
@@ -194,7 +259,7 @@
   },
   {
    "id": "emdash",
-   "rank": 4,
+   "rank": 5,
    "name": "Emdash",
    "short": "Emdash",
    "maker": "General Action (YC W26)",
@@ -255,7 +320,7 @@
   },
   {
    "id": "paseo",
-   "rank": 5,
+   "rank": 6,
    "name": "Paseo",
    "short": "Paseo",
    "maker": "Mohamed Boudra",
@@ -316,7 +381,7 @@
   },
   {
    "id": "openchamber",
-   "rank": 6,
+   "rank": 7,
    "name": "OpenChamber",
    "short": "OpenChamber",
    "maker": "openchamber",
@@ -376,7 +441,7 @@
   },
   {
    "id": "superset",
-   "rank": 7,
+   "rank": 8,
    "name": "Superset",
    "short": "Superset",
    "maker": "Superset (superset-sh)",
@@ -438,7 +503,7 @@
   },
   {
    "id": "cloudroom",
-   "rank": 8,
+   "rank": 9,
    "name": "Cloudroom",
    "short": "Cloudroom",
    "maker": "David Ondrej",
@@ -502,7 +567,7 @@
   },
   {
    "id": "vk",
-   "rank": 9,
+   "rank": 10,
    "name": "Vibe Kanban",
    "short": "Vibe Kanban",
    "maker": "Bloop AI (company wound down Apr 2026; community-maintained)",
@@ -564,7 +629,7 @@
   },
   {
    "id": "cs",
-   "rank": 10,
+   "rank": 11,
    "name": "Claude Squad",
    "short": "Claude Squad",
    "maker": "smtg-ai",
@@ -628,7 +693,7 @@
   },
   {
    "id": "conductor",
-   "rank": 11,
+   "rank": 12,
    "name": "Conductor",
    "short": "Conductor",
    "maker": "Melty Labs",
@@ -690,7 +755,7 @@
   },
   {
    "id": "sculptor",
-   "rank": 12,
+   "rank": 13,
    "name": "Sculptor",
    "short": "Sculptor",
    "maker": "Imbue",
@@ -750,7 +815,7 @@
   },
   {
    "id": "mux",
-   "rank": 13,
+   "rank": 14,
    "name": "Mux (now 'Xum')",
    "short": "Mux / Xum",
    "maker": "Coder",

@@ -1,0 +1,13 @@
+realm: 259636285 bytes, runtime: AppImage runtime version: https://github.com/AppImage/type2-runtime/commit/dd6cebe
+643M in 4741 files, extracted
+orca: 265514790 bytes, runtime: AppImage runtime version: https://github.com/AppImage/type2-runtime/commit/dd6cebe
+802M in 6181 files, extracted
+-rw-r--r-- 1 runner runner 220011184 Oct 24 17:01 /home/runner/work/_temp/bench/tools/realm-x/realm_2.5.0_amd64.deb
+3668	/home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/node_modules/.pnpm/@anthropic-ai+claude-agent-sdk@0.3.281_@anthropic-ai+sdk@0.117.1_zod@3.25.76__@modelcon_491fddba5eb3229f5022dca0c0e4a432
+4136	/home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/node_modules/.pnpm/zod@3.25.76
+4480	/home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/node_modules/.pnpm/katex@0.16.47
+4508	/home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/node_modules/.pnpm/@anthropic-ai+sdk@0.117.1_zod@3.25.76
+13212	/home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/node_modules/.pnpm/vis-network@9.1.13_@egjs+hammerjs@2.0.17_component-emitter@2.0.0_keycharm@0.4.0_uuid@11_6721d85af4e62df4c8b42c3e93fea605
+16808	/home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/node_modules/.pnpm/pdfjs-dist@5.7.284
+32636	/home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/node_modules/.pnpm/@napi-rs+canvas-linux-x64-gnu@0.1.100
+231844	/home/runner/work/_temp/bench/tools/realm-x/squashfs-root/resources/server/node_modules/.pnpm/@anthropic-ai+claude-agent-sdk-linux-x64@0.3.281

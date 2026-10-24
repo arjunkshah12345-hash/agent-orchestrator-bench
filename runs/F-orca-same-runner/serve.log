@@ -1,0 +1,25 @@
+[serve] running on orcad 0.1.0+7a87e80a2a8a
+[orcad-telemetry] {"event":"profile_state_authority_selected","backend":"sqlite","classification":"sqlite-only","authority_mode":"sqlite-established","runtime":"orcad","migrated":false}
+[agent-state-rules] download failed: HTTP 404
+[orcad] orcad is bound to 0.0.0.0 and is reachable from the network. Anything that can reach this port can attempt pairing.
+Orca server ready
+Bound endpoint: ws://0.0.0.0:6768
+Advertised endpoint: ws://127.0.0.1:6768
+Build: 0.1.0+7a87e80a2a8a (4b30ebdb0899d439), Node 24.21.0 ABI 137
+Terminal daemon: live — PTY self-test passed (pty-spawn: healthy); terminals survive an orcad restart: yes
+Terminal process ceiling: off (disabled)
+Web client URL: http://127.0.0.1:6768/web-index.html#pairing=orca%3A%2F%2Fpair%3Fcode%3DeyJ2IjoyLCJlbmRwb2ludCI6IndzOi8vMTI3LjAuMC4xOjY3NjgiLCJkZXZpY2VUb2tlbiI6Ijg5ZDU3ZDRmOTQ3ZDE1ZDQ4Mzg5M2EyMGJmMzVjZTI4ODNlYjQ5OTA5OGUzMGQzZiIsInB1YmxpY0tleUI2NCI6Ii9hcDAyMlBKVVN1cU12WXRLdDJleVFFSitWQ2VRVFF4Skt3SkJsRUo2UmM9IiwicGFpcmVkRGV2aWNlSWQiOiJkODQ2MGMzYS1lOGUwLTRiYjUtYmQyMi04MDdhMGI1NzdiMDMiLCJzY29wZSI6InJ1bnRpbWUiLCJob3N0RGVzY3JpcHRvciI6eyJpbnN0YWxsYXRpb25JZCI6Ijc5NGZkYmMzLThiM2UtNGUyNy1iNzk5LTMyMDJkNmQ3ZmM1NyIsIm1hY2hpbmVCaW5kaW5nIjoicFZZQVNqXzZUTzBQM2ltNEQ5XzlUUjE4eTVCS3RFSkY4SXBLN2RjMkl6ayJ9fQ
+Pairing URL: orca://pair?code=eyJ2IjoyLCJlbmRwb2ludCI6IndzOi8vMTI3LjAuMC4xOjY3NjgiLCJkZXZpY2VUb2tlbiI6Ijg5ZDU3ZDRmOTQ3ZDE1ZDQ4Mzg5M2EyMGJmMzVjZTI4ODNlYjQ5OTA5OGUzMGQzZiIsInB1YmxpY0tleUI2NCI6Ii9hcDAyMlBKVVN1cU12WXRLdDJleVFFSitWQ2VRVFF4Skt3SkJsRUo2UmM9IiwicGFpcmVkRGV2aWNlSWQiOiJkODQ2MGMzYS1lOGUwLTRiYjUtYmQyMi04MDdhMGI1NzdiMDMiLCJzY29wZSI6InJ1bnRpbWUiLCJob3N0RGVzY3JpcHRvciI6eyJpbnN0YWxsYXRpb25JZCI6Ijc5NGZkYmMzLThiM2UtNGUyNy1iNzk5LTMyMDJkNmQ3ZmM1NyIsIm1hY2hpbmVCaW5kaW5nIjoicFZZQVNqXzZUTzBQM2ltNEQ5XzlUUjE4eTVCS3RFSkY4SXBLN2RjMkl6ayJ9fQ
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/1f23fd4836fde087/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/767ff1f51af7f139/bash_history fishSession=none
+[telemetry-cohort] classifier returned undefined { reason: 'store not initialized' }
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/0c8840b0ed302e14/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/36a00402881d8275/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/71e51bf92e3fa4a3/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/008f87b33c40312c/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/1f23fd4836fde087/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/0c8840b0ed302e14/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/767ff1f51af7f139/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/36a00402881d8275/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/008f87b33c40312c/bash_history fishSession=none
+[pty:history] worktreeId=ea371a35-89ed-45b7-b94d-bdea0508a611::/tmp/home-orca-cli/orc... shell=bash histFile=/home/runner/.config/orca/terminal-history/71e51bf92e3fa4a3/bash_history fishSession=none

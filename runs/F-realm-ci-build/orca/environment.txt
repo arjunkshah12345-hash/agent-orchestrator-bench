@@ -1,0 +1,10 @@
+Orca 1.4.230 beside the pre-release CI build of Realm on one GitHub runner (author-run, for a like-for-like comparison only). Superseded by runs/F-orca-same-runner/. The bench's own Orca rows are runs/repeat/orca-* and runs/F-orca/, from the original box.
+
+Runner, job and tools: as runs/F-realm-ci-build/realm/environment.txt (https://github.com/31Carlton7/realm/actions/runs/40073363274).
+Orca:      orca-linux.AppImage v1.4.230 from github.com/stablyai/orca/releases, sha512 checked against its latest-linux.yml,
+           extracted with --appimage-extract into tools/orca-x/.
+Lane A:    python3 harness/orca_suite.py. Each run boots its own `orca-ide serve` on a fresh HOME on Xvfb :90 (as REPRODUCE
+           step 4), times it to "Orca server ready", takes its idle RSS, runs harness/orca_run.py unchanged, then stops it and
+           anything it left running. 3 clean runs (repeat/), the STUB_CRASH=t3 test (result-crash.json), then one more run
+           for merge_eval.py (merge.json). serve-ready.json has every boot, plus one with no DISPLAY (serve-nodisplay.log).
+Launch:    gui/: python3 harness/gui_probe.py orca orca-linux.AppImage, alternating with Realm's (see runs/F-realm-ci-build/realm/environment.txt).

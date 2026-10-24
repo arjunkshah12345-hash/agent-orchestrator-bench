@@ -11,13 +11,14 @@ ns = {"__file__": REP + "/build.py"}
 exec(data_part, ns); exec(dd_part, ns)
 T, SCORED, CRITERIA, SCORES, WHY, score, ranked = ns["T"], ns["SCORED"], ns["CRITERIA"], ns["SCORES"], ns["WHY"], ns["score"], ns["ranked"]
 DD, gui, lane, PROFILES, t3probe = ns["DD"], ns["gui"], ns["lane"], ns["PROFILES"], ns["t3"]
+realm_gui = ns["realm_gui"]
 SOURCES, SECONDARY = ns["SOURCES"], ns["SECONDARY_MENTIONS"]
 orca_ready = ns["orca_ready"]; lb = ns["lb"]; n_rate, n_large, n_schema = ns["n_rate"], ns["n_large"], ns["n_schema"]
 base = ns["base"]
 matrix = {r["Tool"]: r for r in csv.DictReader(open(BENCH + "/matrix.csv"))}
 esc = html.escape
 GUIKEY = {"orca":"orca","synara":"synara","superset":"superset","emdash":"emdash","paseo":"paseo","openchamber":"openchamber","cloudroom":"cloudroom-gui","mux":"mux"}
-STATUS = {i: ("Driven end-to-end" if i in ("orca","cs") else "Installed or launched" if i in ("t3","synara","superset","emdash","paseo","vk","openchamber","mux","cloudroom") else "Not testable here") for i in SCORED}
+STATUS = {i: ("Driven end-to-end" if i in ("orca","cs","realm") else "Installed or launched" if i in ("t3","synara","superset","emdash","paseo","vk","openchamber","mux","cloudroom") else "Not testable here") for i in SCORED}
 SHORT = {"mux": "Mux / Xum"}
 U = "unknown"
 
@@ -36,7 +37,7 @@ def srcs_for(t):
 tools = []
 for rank, i in enumerate(ranked, 1):
     t = T[i]; s, cov = score(i); m = matrix.get(t["name"], {})
-    g = gui.get(GUIKEY.get(i, ""), None)
+    g = realm_gui if i == "realm" else gui.get(GUIKEY.get(i, ""), None)
     tools.append(dict(id=i, rank=rank, name=t["name"], short=SHORT.get(i, t["name"]), maker=t["maker"], url=t["url"], repo=t["repo"] or "", license=t["license"],
         price=t["price"], status=STATUS[i], score=s, coverage=cov, crit={k: SCORES[i][k] for k, *_ in CRITERIA},
         stars=m.get("GitHub stars", ""), issues=m.get("Open issues+PRs", ""), release=m.get("Latest release", ""), release_date=(m.get("Latest release date (UTC)", "") or "")[:10],
@@ -48,8 +49,8 @@ for x in tools:
     W_ = {k: w for k, _, w, _ in CRITERIA}; known = {k: v for k, v in x["crit"].items() if v is not None}
     lo = round(sum(W_[k] * v for k, v in known.items()) / 100 * 20, 1); hi = round(lo + sum(W_[k] for k in x["crit"] if x["crit"][k] is None) / 100 * 100, 1)
     x["range"] = [lo, hi]
-    x["validation"] = "Stub end-to-end" if x["id"] in ("orca", "cs") else "Launched" if x["status"].startswith("Installed") else "None"
-    x["measured"] = ("Stub run x3, launch probe" if x["id"] == "orca" else "Stub run x3" if x["id"] == "cs" else "Server probe" if x["id"] == "t3"
+    x["validation"] = "Stub end-to-end" if x["id"] in ("orca", "cs", "realm") else "Launched" if x["status"].startswith("Installed") else "None"
+    x["measured"] = ("Stub run x3, launch probe" if x["id"] == "orca" else "Stub run x3" if x["id"] == "cs" else "Stub run x3, launch probe (author-run, GitHub runner)" if x["id"] == "realm" else "Server probe" if x["id"] == "t3"
                      else "Launch probe" if x["first_window"] is not None else "Boot only" if x["id"] == "vk" else "None")
 TJ = {x["id"]: x for x in tools}
 crit = [dict(k=k, label=l, w=w, five=f) for k, l, w, f in CRITERIA]
@@ -105,7 +106,8 @@ def tierrows(r=""):
     return "".join(f'<div class="tier t{k}"><div class="tk"><canvas class="tband" data-tier="{i}" aria-hidden="true"></canvas><b>{k}</b><span class="lab">{c}</span></div><div class="tchips">{chips(TL[k], r) or "<span class=lab>none</span>"}</div></div>' for i, (k, _, c) in enumerate(TIERS))
 TNOTE = '<p class="note"><b>Feature-assessment tier list, not a performance ranking.</b> Tiers come from the weighted feature assessment (docs, repos, feature testing). Only Orca and Claude Squad were run end-to-end, and only with stub agents. A chip marked "B to A" has a score range that crosses tiers because some criteria had no evidence.</p>'
 # ---------- HOME ----------
-cs_runs = lane["Claude Squad"]; or_runs = lane["Orca (orca serve CLI)"]
+cs_runs = lane["Claude Squad"]; or_runs = lane["Orca (orca serve CLI)"]; re_runs = lane["Realm (realm serve CLI)*"]; REALM_NOTE = ns["REALM_NOTE"]
+RUNNER, orca_gui_same = ns["RUNNER"], ns["orca_gui_same"]
 orv = sum(r["verified"] for r in or_runs); csv_ = sum(r["verified"] for r in cs_runs)
 def rng(rs, k, f="{:.2f}"): return f.format(min(r[k] for r in rs)) + " to " + f.format(max(r[k] for r in rs))
 OL, CL = rng(or_runs, "launch"), rng(cs_runs, "launch"); OM, CM = rng(or_runs, "rss", "{:.0f}"), rng(cs_runs, "rss", "{:.0f}")
@@ -204,18 +206,22 @@ for t in tools:
     crow = "".join(f'<li><span class="ck">{c["k"]}</span><span class="cl">{esc(c["label"])}<small>weight {c["w"]}</small></span><span class="meter" data-meter="{t["crit"][c["k"]] if t["crit"][c["k"]] is not None else 0}" data-max="5" data-none="{1 if t["crit"][c["k"]] is None else 0}" role="img" aria-label="{esc(c["label"])}: {cv(t["crit"][c["k"]])} of 5"></span><b class="cv">{cv(t["crit"][c["k"]]) if t["crit"][c["k"]] is not None else "n/r"}</b></li>' for c in crit)
     facts = "".join(f'<div><dt>{esc(l)}</dt><dd{" class=unk" if t["facts"][k]==U else ""}>{esc(t["facts"][k])}</dd></div>' for k, l in FL)
     ev = [("Hands-on (this box)", t["hands_on"])]
-    if t["first_window"] is not None: ev.append(("Launch probe", f'First window {t["first_window"]} s, process-tree RSS {t["rss"]} MB on Xvfb.'))
+    if t["first_window"] is not None: ev.append(("Launch probe", f'First window {t["first_window"]} s, process-tree RSS {t["rss"]} MB on Xvfb.'
+        + (f' Author-run on {RUNNER}, the median of 3 launches; Orca on the same runner: {orca_gui_same["first_window_s"]} s, {orca_gui_same["rss_mb_tree"]} MB.' if i == "realm" else "")))
     if i == "t3": ev.append(("Server probe", "Headless server port open in 1.01 s, 394 MB idle."))
     if i == "orca":
         ev.append(("Lane A, 3 runs", f'All 6 sessions launched in {min(r["launch"] for r in or_runs):.2f} to {max(r["launch"] for r in or_runs):.2f} s; {orv}/18 verified; peak RSS {min(r["rss"] for r in or_runs):.0f} to {max(r["rss"] for r in or_runs):.0f} MB; orca serve ready in 2.79 to 3.06 s.'))
     if i == "cs":
         ev.append(("Lane A, 3 runs", f'All 6 sessions created in {min(r["launch"] for r in cs_runs):.2f} to {max(r["launch"] for r in cs_runs):.2f} s (includes about 1.1 s per session of driver keystroke delays); {csv_}/18 verified; peak RSS {min(r["rss"] for r in cs_runs):.0f} to {max(r["rss"] for r in cs_runs):.0f} MB.'))
-    if i in ("orca", "cs"): ev.append(("Crash and merge", "SIGKILL on one session: the other 5 stayed verified and partial work was preserved. Git merges: 5/6 clean, with t5b conflicting in shelf/config.py as designed."))
+    if i == "realm":
+        ev.append(("Lane A, 3 runs", f'All 6 sessions launched in {min(r["launch"] for r in re_runs):.2f} to {max(r["launch"] for r in re_runs):.2f} s; {sum(r["verified"] for r in re_runs)}/18 verified; peak RSS {min(r["rss"] for r in re_runs):.0f} to {max(r["rss"] for r in re_runs):.0f} MB. ' + REALM_NOTE))
+    if i in ("orca", "cs", "realm"): ev.append(("Crash and merge", "SIGKILL on one session: the other 5 stayed verified and partial work was preserved. Git merges: 5/6 clean, with t5b conflicting in shelf/config.py as designed."))
     if t["bugs"] != U: ev.append(("Known issues", t["bugs"]))
     if t["notes"]: ev.append(("Notes", t["notes"]))
     evh = "".join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in ev)
     sl = "".join(f'<li><a href="{esc(u)}" rel="noopener">{esc(l)}</a></li>' for l, u in srcs_for(raw))
-    shot = f'<figure class="shot"><img src="../assets/img/{GUIKEY[i]}.jpg" alt="Screenshot of {esc(t["name"])} first window on Linux (Xvfb launch probe)" width="640" height="400"><figcaption class="lab">First window, Xvfb launch probe</figcaption></figure>' if i in GUIKEY else ""
+    shotkey = "realm" if i == "realm" else GUIKEY.get(i)
+    shot = f'<figure class="shot"><img src="../assets/img/{shotkey}.jpg" alt="Screenshot of {esc(t["name"])} first window on Linux (Xvfb launch probe)" width="640" height="400"><figcaption class="lab">First window, Xvfb launch probe{" (author-run, GitHub runner)" if i == "realm" else ""}</figcaption></figure>' if shotkey else ""
     idx = ranked.index(i); prev_ = T[ranked[idx-1]] if idx else None; next_ = T[ranked[idx+1]] if idx+1 < len(ranked) else None
     pn = '<nav class="pn" aria-label="Other tools">' + (f'<a class="mb o" href="{prev_["id"]}.html">Prev: {esc(prev_["name"])}</a>' if prev_ else "<span></span>") + (f'<a class="mb o" href="{next_["id"]}.html">Next: {esc(next_["name"])}</a>' if next_ else "") + "</nav>"
     meta = [("Maker", t["maker"]), ("License", t["license"]), ("Pricing", t["price"]), ("Stars", t["stars"] or "-"), ("Open issues+PRs", t["issues"] or "-"), ("Latest release", (t["release"] + " " + t["release_date"]).strip() or "-")]
@@ -253,10 +259,12 @@ write("compare.html", page("compare.html", "Compare / Harness Bench", "Compare t
 # ---------- METHODOLOGY ----------
 rub = "".join(f'<tr><th scope="row">{c["k"]}</th><td>{esc(c["label"])}</td><td class="num">{c["w"]}</td><td>{esc(c["five"])}</td></tr>' for c in crit)
 lane_rows = f'<tr><th scope="row">Baseline git worktree</th><td class="num">1</td><td class="num">0.043</td><td class="num">8.4</td><td class="num">6/6</td><td class="num">-</td></tr>'
-for nm, rs in [("Claude Squad", cs_runs), ("Orca (orca serve CLI)", or_runs)]:
+for nm, rs in [("Claude Squad", cs_runs), ("Orca (orca serve CLI)", or_runs), ("Realm (realm serve CLI)*", re_runs)]:
     lane_rows += f'<tr><th scope="row">{nm}</th><td class="num">3</td><td class="num">{min(r["launch"] for r in rs):.2f} to {max(r["launch"] for r in rs):.2f}</td><td class="num">{sum(r["total"] for r in rs)/3:.1f}</td><td class="num">{sum(r["verified"] for r in rs)}/18</td><td class="num">{min(r["rss"] for r in rs):.0f} to {max(r["rss"] for r in rs):.0f}</td></tr>'
 probes = sorted(((T[k]["name"], v) for k, v in [(i, gui[g]) for i, g in GUIKEY.items() if g in gui]), key=lambda x: x[1]["first_window_s"])
 pr = "".join(f'<tr><th scope="row">{esc(n)}</th><td class="num">{v["first_window_s"]}</td><td class="num">{v["rss_mb_tree"]}</td></tr>' for n, v in probes)
+pr += f'<tr><th scope="row">Realm*</th><td class="num">{realm_gui["first_window_s"]}</td><td class="num">{realm_gui["rss_mb_tree"]}</td></tr>'
+PROBE_NOTE = f"* Realm: author-run on {RUNNER}, the median of 3 launches. Orca on the same runner, same probe: {orca_gui_same['first_window_s']} s, {orca_gui_same['rss_mb_tree']} MB."
 lbr = "".join(f'<tr><td>{esc(x["model"])}</td><td>{x["task"]}</td><td>{x["exit"]}</td><td class="num">{x["wall"] if x["wall"] is not None else "-"}</td><td>{"pass" if x["ok"] else "fail"}</td></tr>' for x in lb)
 mbody = f"""<section class="phead"><div class="wrap"><span class="lab">Methodology</span><h1>How the scores were made, and what they are not</h1>
 <p class="lede">This is a feature and orchestration benchmark, not a model leaderboard. The ranking is a weighted feature assessment, not measured performance. Scores are editorial judgement on a 0 to 5 scale per criterion, backed by vendor docs, repos, a GitHub snapshot (2026-10-19 17:25 UTC) and hands-on probes on one Linux box. There are no real-model task results in any score: no Claude, Codex, Cursor or Grok agent CLI was logged in on the box.</p></div></section>
@@ -265,9 +273,9 @@ mbody = f"""<section class="phead"><div class="wrap"><span class="lab">Methodolo
 {band()}
 {sec("Box", "Test environment", '<dl class="facts"><div><dt>Machine</dt><dd>Linux x86_64, 8 vCPU, 16 GB, no Docker.</dd></div><div><dt>Accounts</dt><dd>No authenticated agent CLIs. We did not buy credits or sign up for anything.</dd></div><div><dt>Fixture</dt><dd>A small Python repo with 6 tasks: bug fix, feature, refactor, test-writing checked against seeded mutants, and two deliberately conflicting edits (t5a, t5b). Hidden verifiers decide pass or fail.</dd></div><div><dt>Verifier self-test</dt><dd>All verifiers fail on the base repo, all pass on reference solutions, and t5a + t5b really conflict.</dd></div></dl>')}
 {band()}
-{sec("Feature testing / Lane A", "Orchestrator mechanics with a stub agent", f'<p class="body">A deterministic stub agent stands in for a model so we can measure the orchestrator itself: parallel launch, isolation, crash behaviour and merge. It says nothing about how well a real model codes inside each tool.</p><div class="tablewrap"><table><thead><tr><th scope="col">Harness</th><th scope="col">Runs</th><th scope="col">All launched (s)</th><th scope="col">Mean wall (s)</th><th scope="col">Verified</th><th scope="col">Peak RSS MB</th></tr></thead><tbody>{lane_rows}</tbody></table></div>')}
+{sec("Feature testing / Lane A", "Orchestrator mechanics with a stub agent", f'<p class="body">A deterministic stub agent stands in for a model so we can measure the orchestrator itself: parallel launch, isolation, crash behaviour and merge. It says nothing about how well a real model codes inside each tool.</p><div class="tablewrap"><table><thead><tr><th scope="col">Harness</th><th scope="col">Runs</th><th scope="col">All launched (s)</th><th scope="col">Mean wall (s)</th><th scope="col">Verified</th><th scope="col">Peak RSS MB</th></tr></thead><tbody>{lane_rows}</tbody></table></div><p class="note">{esc(REALM_NOTE)}</p>')}
 {band()}
-{sec("Launch probes", "Time to first window on Xvfb", f'<div class="split"><div class="tablewrap"><table><thead><tr><th scope="col">Tool</th><th scope="col">First window (s)</th><th scope="col">RSS MB</th></tr></thead><tbody>{pr}<tr><th scope="row">T3 Code server</th><td class="num">1.01 (port)</td><td class="num">394</td></tr></tbody></table></div><div class="chart dk-theme-dark" data-bars="{bars_attr([(n, v["first_window_s"]) for n, v in probes], 0)}" data-unit=" s" style="--h:290px" role="img" aria-label="First-window seconds per tool, lower is faster"></div></div>')}
+{sec("Launch probes", "Time to first window on Xvfb", f'<div class="split"><div class="tablewrap"><table><thead><tr><th scope="col">Tool</th><th scope="col">First window (s)</th><th scope="col">RSS MB</th></tr></thead><tbody>{pr}<tr><th scope="row">T3 Code server</th><td class="num">1.01 (port)</td><td class="num">394</td></tr></tbody></table><p class="note">{esc(PROBE_NOTE)}</p></div><div class="chart dk-theme-dark" data-bars="{bars_attr([(n, v["first_window_s"]) for n, v in probes], 0)}" data-unit=" s" style="--h:290px" role="img" aria-label="First-window seconds per tool, lower is faster"></div></div>')}
 {band()}
 {sec("Limitations", "What we could not test", f'<ul class="lims"><li><b>No real-model task success.</b> No Claude, Codex, Cursor or Grok CLI was logged in. The only key was a Groq free tier (7 to 8k tokens per minute) and one opencode request was 7.3 to 8.6k tokens. 0 of {len(lb)} attempts passed ({n_rate} rate-limit, {n_large} too-large and {n_schema} tool-schema errors in the logs). Those attempts are shown below for transparency and are not used in any score.</li><li><b>T3 Code and Synara sessions.</b> Both orchestrate agent CLIs that must be installed and authenticated; none were.</li><li><b>Cloudroom core.</b> Its installer needs root and systemd on a fresh Ubuntu 24.04 VM, which we did not do on a shared box.</li><li><b>Closed or macOS-only tools</b> (Conductor and others) were scored from docs and secondary sources only.</li><li><b>Judgement.</b> Criterion scores are one reviewer\'s reading of the evidence. Use the sensitivity table, the score range and the coverage columns to see how much a ranking depends on it.</li><li><b>Snapshot.</b> Stars, releases and pricing are as of 2026-10-19 and several tools ship daily.</li></ul><div class="tablewrap"><table><caption class="lab capt">Lane B attempts (not scored)</caption><thead><tr><th scope="col">Model</th><th scope="col">Task</th><th scope="col">Exit</th><th scope="col">Wall s</th><th scope="col">Verified</th></tr></thead><tbody>{lbr}</tbody></table></div>')}
 """
@@ -306,6 +314,7 @@ VERS = [("Orca", "v1.4.230 (Linux AppImage, extracted); headless runtime orcad 0
         ("T3 Code", "v0.1.0 linux-x64 server tarball", "runs/D-t3code/probe.log"),
         ("opencode (Lane B agent)", "1.19.3", "runs/00-setup/opencode-install.log"),
         ("GUI apps (launch probes)", "Synara 1.0.7, Superset 1.39.0, Emdash 1.2.8, OpenChamber 2.5.0, Paseo 0.12.0, Cloudroom GUI v110-beta, Mux/Xum 0.31.0", "runs/00-setup/gui-probes-summary.log"),
+        ("Realm (author-run)", "v2.5.0 release, Realm-2.5.0.AppImage (extracted), sha256 61ecf73c7cf37640243b7ed8f0320cebf1890b5810722277a92b416c9a4e43c0", "runs/F-realm/environment.txt"),
         ("Fixture repo", "commit 377fb426b834ede261ddfe7e70a6301aeaf31b5e (\"fixture base\")", "fixture/repo"),
         ("Python / git / tmux", "Python 3.13.5, git 2.47.3, tmux 3.5a", None)]
 ENVR = [("OS", "Debian GNU/Linux 13 (trixie), kernel 6.12, x86_64"), ("Hardware", "8 vCPU, 16 GB RAM, no GPU, no Docker"), ("Display", "Xvfb virtual display for GUI apps and orca serve"),
@@ -316,11 +325,14 @@ STEPS = [
  ("Install the orchestrators", "# Orca v1.4.230 AppImage from github.com/stablyai/orca/releases, extract to tools/orca-x\n./orca-linux.AppImage --appimage-extract && mv squashfs-root tools/orca-x/\n# Claude Squad v1.0.20 from github.com/smtg-ai/claude-squad/releases into tools/cs/claude-squad"),
  ("Orca, 3 runs", "Xvfb :90 &\nHOME=/tmp/home-orca-cli DISPLAY=:90 tools/orca-x/squashfs-root/resources/bin/orca-ide serve &\npython3 harness/orca_run.py   # repeat 3x; copy runs/F-orca/result.json + resources.csv per run\nSTUB_CRASH=t3 python3 harness/orca_run.py   # crash test"),
  ("Claude Squad, 3 runs", "python3 harness/cs_run.py   # drives the TUI through tmux; repeat 3x\nSTUB_CRASH=t3 python3 harness/cs_run.py"),
+ ("Realm, 3 runs + crash + merge", "# Realm v2.5.0's Linux AppImage, the first release that ships resources/bin/realm\ncurl -fLO https://github.com/31Carlton7/realm/releases/download/v2.5.0/Realm-2.5.0.AppImage && chmod +x Realm-2.5.0.AppImage\necho '61ecf73c7cf37640243b7ed8f0320cebf1890b5810722277a92b416c9a4e43c0  Realm-2.5.0.AppImage' | sha256sum -c\n./Realm-2.5.0.AppImage --appimage-extract && mkdir -p tools/realm-x && mv squashfs-root tools/realm-x/\nREALM_BIN=tools/realm-x/squashfs-root/resources/bin/realm python3 harness/realm_suite.py   # no Node, no display; boots its own realm serve on a scratch home each run\npython3 harness/gui_probe.py realm ./Realm-2.5.0.AppImage   # Xvfb :90, as step 8\npython3 harness/orca_suite.py   # optional: Orca the same way on the same box, booting its own orca serve on Xvfb :90 each run\n# macOS app launch probe: swiftc -O harness/winlist.swift -o harness/winlist && python3 harness/gui_probe_mac.py realm /Applications/Realm.app"),
  ("Merge check", "python3 harness/merge_eval.py   # expects 5/6 clean, t5b conflicting in shelf/config.py"),
  ("GUI launch probes", "python3 harness/gui_probe.py <name> <path-to-AppImage>   # first window time + RSS on Xvfb"),
  ("Rebuild the site from the logs", "python3 site/build.py && python3 -m http.server -d site 8000"),
 ]
-RAW = [("runs/repeat/", "Orca and Claude Squad, 3 runs each: run JSON + 1 s resource CSVs"), ("runs/F-orca/", "Orca crash test, merge, serve readiness and restarts"),
+RAW = [("runs/repeat/", "Orca, Claude Squad and Realm, 3 runs each: run JSON + 1 s resource CSVs"), ("runs/F-orca/", "Orca crash test, merge, serve readiness and restarts"),
+       ("runs/F-realm/", "Realm v2.5.0 crash test, merge, serve readiness and AppImage launch probe (author-run, GitHub ubuntu-latest runner)"), ("runs/F-orca-same-runner/", "Orca lane A, crash, merge, serve readiness and launch probe on that same runner, same job (author-run)"),
+       ("runs/F-realm-ci-build/", "the same job on Realm's pre-release CI build, with Orca beside it (author-run)"), ("runs/F-realm-container/", "Realm's earlier lane A in a Debian 13 container on an Apple M4 Mac (author-run)"), ("runs/F-realm-macos/", "Realm lane A, crash, merge and app launch probe on macOS (author-run)"),
        ("runs/C-claude-squad/", "Claude Squad screens, crash test, tmux-kill recovery, merge"), ("runs/A-baseline-stub/", "plain worktree baseline"),
        ("runs/E-gui-*/", "GUI launch probes with screenshots"), ("runs/D-t3code/", "T3 Code server probe"), ("runs/B*/", "Lane B real-model attempts (all failed, not scored)"),
        ("runs/R-real-round-DRYRUN-stub/", "real-agent harness plumbing check with the stub agent (not a result)"),

@@ -11,6 +11,7 @@ This is a feature and orchestration benchmark, not a model leaderboard. The meas
 | T3 Code | v0.1.0 linux-x64 server tarball | `runs/D-t3code/probe.log` |
 | opencode (Lane B agent) | 1.19.3 | `runs/00-setup/opencode-install.log` |
 | GUI apps (launch probes) | Synara 1.0.7, Superset 1.39.0, Emdash 1.2.8, OpenChamber 2.5.0, Paseo 0.12.0, Cloudroom GUI v110-beta, Mux/Xum 0.31.0 | `runs/00-setup/gui-probes-summary.log` |
+| Realm (author-run) | v2.5.0 release, Realm-2.5.0.AppImage (extracted), sha256 61ecf73c7cf37640243b7ed8f0320cebf1890b5810722277a92b416c9a4e43c0 | `runs/F-realm/environment.txt` |
 | Fixture repo | commit 377fb426b834ede261ddfe7e70a6301aeaf31b5e ("fixture base") | `fixture/repo` |
 | Python / git / tmux | Python 3.13.5, git 2.47.3, tmux 3.5a | - |
 
@@ -68,19 +69,32 @@ python3 harness/cs_run.py   # drives the TUI through tmux; repeat 3x
 STUB_CRASH=t3 python3 harness/cs_run.py
 ```
 
-6. Merge check
+6. Realm, 3 runs + crash + merge
+
+```
+# Realm v2.5.0's Linux AppImage, the first release that ships resources/bin/realm
+curl -fLO https://github.com/31Carlton7/realm/releases/download/v2.5.0/Realm-2.5.0.AppImage && chmod +x Realm-2.5.0.AppImage
+echo '61ecf73c7cf37640243b7ed8f0320cebf1890b5810722277a92b416c9a4e43c0  Realm-2.5.0.AppImage' | sha256sum -c
+./Realm-2.5.0.AppImage --appimage-extract && mkdir -p tools/realm-x && mv squashfs-root tools/realm-x/
+REALM_BIN=tools/realm-x/squashfs-root/resources/bin/realm python3 harness/realm_suite.py   # no Node, no display; boots its own realm serve on a scratch home each run
+python3 harness/gui_probe.py realm ./Realm-2.5.0.AppImage   # Xvfb :90, as step 8
+python3 harness/orca_suite.py   # optional: Orca the same way on the same box, booting its own orca serve on Xvfb :90 each run
+# macOS app launch probe: swiftc -O harness/winlist.swift -o harness/winlist && python3 harness/gui_probe_mac.py realm /Applications/Realm.app
+```
+
+7. Merge check
 
 ```
 python3 harness/merge_eval.py   # expects 5/6 clean, t5b conflicting in shelf/config.py
 ```
 
-7. GUI launch probes
+8. GUI launch probes
 
 ```
 python3 harness/gui_probe.py <name> <path-to-AppImage>   # first window time + RSS on Xvfb
 ```
 
-8. Rebuild the site from the logs
+9. Rebuild the site from the logs
 
 ```
 python3 site/build.py && python3 -m http.server -d site 8000
@@ -88,8 +102,13 @@ python3 site/build.py && python3 -m http.server -d site 8000
 
 ## Raw data
 
-- `runs/repeat/`: Orca and Claude Squad, 3 runs each: run JSON + 1 s resource CSVs
+- `runs/repeat/`: Orca, Claude Squad and Realm, 3 runs each: run JSON + 1 s resource CSVs
 - `runs/F-orca/`: Orca crash test, merge, serve readiness and restarts
+- `runs/F-realm/`: Realm v2.5.0 crash test, merge, serve readiness and AppImage launch probe (author-run, GitHub ubuntu-latest runner)
+- `runs/F-orca-same-runner/`: Orca lane A, crash, merge, serve readiness and launch probe on that same runner, same job (author-run)
+- `runs/F-realm-ci-build/`: the same job on Realm's pre-release CI build, with Orca beside it (author-run)
+- `runs/F-realm-container/`: Realm's earlier lane A in a Debian 13 container on an Apple M4 Mac (author-run)
+- `runs/F-realm-macos/`: Realm lane A, crash, merge and app launch probe on macOS (author-run)
 - `runs/C-claude-squad/`: Claude Squad screens, crash test, tmux-kill recovery, merge
 - `runs/A-baseline-stub/`: plain worktree baseline
 - `runs/E-gui-*/`: GUI launch probes with screenshots

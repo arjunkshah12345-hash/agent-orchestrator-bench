@@ -12,7 +12,8 @@ snap_day = gh["snapshot_utc"][:10]
 def peak(f, col="match_rss_mb"):
     rows = list(csv.DictReader(open(f))); return max(float(r[col]) for r in rows) if rows else None
 lane = {}
-for tool, pre in [("Claude Squad", "cs"), ("Orca (orca serve CLI)", "orca")]:
+LANE_PRE = {"Claude Squad": "cs", "Orca (orca serve CLI)": "orca", "Realm (realm serve CLI)*": "realm"}
+for tool, pre in LANE_PRE.items():
     runs = []
     for i in (1, 2, 3):
         d = J(f"{RUNS}/repeat/{pre}-run{i}.json"); s = d["sessions"]
@@ -23,6 +24,22 @@ cs_one = J(f"{RUNS}/repeat/cs-run1.json"); orca_one = J(f"{RUNS}/repeat/orca-run
 cs_crash = J(f"{RUNS}/C-claude-squad/result-crash.json"); orca_crash = J(f"{RUNS}/F-orca/result-crash.json")
 cs_merge = J(f"{RUNS}/C-claude-squad/merge.json"); orca_merge = J(f"{RUNS}/F-orca/merge.json")
 orca_ready = J(f"{RUNS}/F-orca/serve-ready.json")["orca_serve_ready_s"]
+realm_one = J(f"{RUNS}/repeat/realm-run1.json"); realm_crash = J(f"{RUNS}/F-realm/result-crash.json"); realm_merge = J(f"{RUNS}/F-realm/merge.json")
+realm_ready = J(f"{RUNS}/F-realm/serve-ready.json")["realm_serve_ready_s"]
+# Realm's lane A and its launch probe were run by Realm's author on a GitHub-hosted runner, not on the box above, with Orca
+# measured on the same runner in the same job; every table that shows them says so.
+RUNNER = "a GitHub-hosted ubuntu-latest runner (x86_64, 4 vCPU, 16 GB, Ubuntu 24.04)"
+REALM_NOTE = (f"* Realm: run by Realm's author (a disclosed conflict of interest) on {RUNNER}, not on the 8 vCPU box the other rows come from, "
+              "through the `realm` command the v2.5.0 release's Linux AppImage ships (squashfs-root/resources/bin/realm). Same harness shape (harness/realm_run.py), "
+              "same fixture, stub and verifiers. Orca 1.4.230 ran on the same runner in the same job (harness/orca_suite.py, runs/F-orca-same-runner/). "
+              "Earlier runs are in runs/F-realm-ci-build/ (a pre-release CI build), runs/F-realm-container/ (a Debian 13 container) and runs/F-realm-macos/.")
+def median_probe(d):
+    ps = sorted((J(p) for p in sorted(glob.glob(f"{d}/probe-run*.json"))), key=lambda p: p["first_window_s"]); return ps[len(ps) // 2]
+realm_gui, orca_gui_same = median_probe(f"{RUNS}/F-realm/gui"), median_probe(f"{RUNS}/F-orca-same-runner/gui")
+orca_same = [J(f"{RUNS}/F-orca-same-runner/repeat/orca-run{i}.json") for i in (1, 2, 3)]
+orca_same_rss = [peak(f"{RUNS}/F-orca-same-runner/repeat/orca-res{i}.csv") for i in (1, 2, 3)]
+orca_same_ready = J(f"{RUNS}/F-orca-same-runner/serve-ready.json")["orca_serve_ready_s"]
+span = lambda xs, f="{:.2f}": f.format(min(xs)) if min(xs) == max(xs) else f"{f.format(min(xs))} to {f.format(max(xs))}"
 gui = {os.path.basename(d)[6:]: J(d + "/probe.json") for d in sorted(glob.glob(f"{RUNS}/E-gui-*"))}
 t3 = J(f"{RUNS}/D-t3code/probe.json")
 lb = []
@@ -240,10 +257,14 @@ names = {"orca": "Orca 1.4.230", "synara": "Synara 1.0.7", "superset": "Superset
 gate = {"orca": "none (agent picker; detected OpenCode)", "synara": "none ('No account')", "superset": "<b>GitHub/Google sign-in required</b>", "emdash": "GitHub connect, skippable", "openchamber": "none", "paseo": "none", "cloudroom-gui": "none seen in 12 s", "mux": "gateway login offered, skippable"}
 for k in order:
     g = gui[k]; rows.append([names[k], f"<span class='num'>{g['first_window_s']}</span>", f"<span class='num'>{g['rss_mb_tree']:,}</span>", f"<span class='num'>{g['procs']}</span>", gate[k]])
+rows.append(["Realm 2.5.0*", f"<span class='num'>{realm_gui['first_window_s']}</span>", f"<span class='num'>{realm_gui['rss_mb_tree']:,}</span>", f"<span class='num'>{realm_gui['procs']}</span>", "none (agent picker; sign-in optional)"])
 rows.append(["T3 Code 0.1.0 server (<code>t3 serve</code>)", f"<span class='num'>{t3['ready_s']}</span> (port open)", f"<span class='num'>{t3['idle_rss_mb']}</span>", f"<span class='num'>{t3['procs']}</span>", "pairing token printed (local)"])
 rows.append(["Vibe Kanban 0.1.44 (<code>npx</code>, cold)", "about 10 (port open, incl. 49.9 MB download)", "about 684", "–", "none; analytics on by default"])
 rows.append(["Claude Squad 1.0.20", f"<span class='num'>{cs_one['ui_ready_s']}</span> (TUI drawn)", f"{min(r['rss'] for r in lane['Claude Squad']):.0f} to {max(r['rss'] for r in lane['Claude Squad']):.0f} (peak under load)", "–", "none"])
 add(table(["Tool", "Time to UI (s)", "RSS (MB)", "Procs", "First-run gate"], rows))
+REALM_GUI_NOTE = (f"* Realm: author-run on {RUNNER}, the median of 3 launches after one that was not counted. Orca 1.4.230 on the same runner, "
+                  f"same probe: {orca_gui_same['first_window_s']} s, {orca_gui_same['rss_mb_tree']:,} MB. Logs: runs/F-realm/gui/, runs/F-orca-same-runner/gui/.")
+add(f"<p class='cap'>{esc(REALM_GUI_NOTE)}</p>")
 add("<div class='grid2'>" + hbar([(names[k], gui[k]["first_window_s"]) for k in order], unit=" s", note="Time from AppImage launch to first visible window (Xvfb, fresh HOME, one run each).") + hbar([(names[k], gui[k]["rss_mb_tree"]) for k in sorted(order, key=lambda k: gui[k]["rss_mb_tree"])], unit="", fmt="{:,.0f}", note="Process-tree RSS in MB after 12 s idle. Emdash ran 23 processes.") + "</div>")
 add("<p class='cap'>Downloads: 8 release artifacts (about 1.9 GB total) came down in 14.6 s with <code>gh release download</code>. Synara's AppImage and server tarball took a further 2.3 s. Other install timings: opencode via npm 6.4 s, the Claude Squad binary 0.25 s, the T3 Code server tarball 3.0 s, extracting Orca's AppImage 2.3 s. Logs: <code>runs/00-setup/</code>.</p>")
 add("<div class='grid3'>" + "".join(f"<figure style='margin:0'><img class='shot' src='{img(k)}' alt='{names[k]} first screen'><figcaption class='cap'>{names[k]}: first screen on Linux.</figcaption></figure>" for k in ["orca", "synara", "superset", "emdash", "paseo", "openchamber"]) + "</div>")
@@ -252,22 +273,33 @@ add("<h3>6.2 · Lane A: orchestrator mechanics (stub agent, 6 parallel tasks)</h
 rows = []
 rows.append(["Baseline: plain git worktree + 6 processes", "1", f"<span class='num'>{base['_worktree_setup_s']}</span> (6 worktrees)", "–", f"<span class='num'>{base['_total_wall_s']}</span>", f"<span class='num'>{sum(1 for k,v in base.items() if not k.startswith('_') and v['verified'])}/6</span>", "–"])
 for tool, runs in lane.items():
-    rows.append([tool, "3", f"<span class='num'>{min(r['launch'] for r in runs):.2f} to {max(r['launch'] for r in runs):.2f}</span>", f"<span class='num'>{(cs_one['first_agent_running_s'] if 'Squad' in tool else min(v['since_start_s'] for v in orca_one['sessions'].values())):.2f}</span>", f"<span class='num'>{st.mean(r['total'] for r in runs):.1f}</span>", f"<span class='num'>{sum(r['verified'] for r in runs)}/18</span>", f"<span class='num'>{min(r['rss'] for r in runs):.0f} to {max(r['rss'] for r in runs):.0f}</span>"])
+    one = {"cs": cs_one, "orca": orca_one, "realm": realm_one}[LANE_PRE[tool]]
+    rows.append([tool, "3", f"<span class='num'>{min(r['launch'] for r in runs):.2f} to {max(r['launch'] for r in runs):.2f}</span>", f"<span class='num'>{(one['first_agent_running_s'] if 'Squad' in tool else min(v['since_start_s'] for v in one['sessions'].values())):.2f}</span>", f"<span class='num'>{st.mean(r['total'] for r in runs):.1f}</span>", f"<span class='num'>{sum(r['verified'] for r in runs)}/18</span>", f"<span class='num'>{min(r['rss'] for r in runs):.0f} to {max(r['rss'] for r in runs):.0f}</span>"])
 add(table(["Harness", "Runs", "All 6 launched (s)", "First agent running (s)", "Mean wall, launch to verified (s)", "Verified", "Peak RSS (MB)"], rows))
+add(f"<p class='cap'>{esc(REALM_NOTE)}</p>")
+re_l = lane["Realm (realm serve CLI)*"]
+SAME = [("First window, AppImage on Xvfb (s)", realm_gui["first_window_s"], orca_gui_same["first_window_s"]),
+        ("Process-tree RSS 12 s later (MB)", realm_gui["rss_mb_tree"], orca_gui_same["rss_mb_tree"]),
+        ("Headless server ready (s)", span(realm_ready), span(orca_same_ready)),
+        ("All 6 launched (s)", span([r["launch"] for r in re_l]), span([d["all_launched_s"] for d in orca_same])),
+        ("Mean wall, launch to verified (s)", f"{st.mean(r['total'] for r in re_l):.1f}", f"{st.mean(d['total_wall_s'] for d in orca_same):.1f}"),
+        ("Verified", f"{sum(r['verified'] for r in re_l)}/18", f"{sum(sum(1 for v in d['sessions'].values() if v.get('verified')) for d in orca_same)}/18"),
+        ("Peak RSS (MB)", span([r["rss"] for r in re_l], "{:.0f}"), span(orca_same_rss, "{:.0f}"))]
+add(table(["Same GitHub runner, same job (author-run)", "Realm*", "Orca 1.4.230"], [[a, f"<span class='num'>{b}</span>", f"<span class='num'>{c}</span>"] for a, b, c in SAME]))
 add(f"""<p class='cap'>How to read this: the stub "works" for 10 s, so about 10 s of every wall time is simulated work. Claude Squad creates sessions one at a time through a form. Our driver adds about 1.1 s of fixed keystroke delays per session, so roughly 6.6 s of its {min(cs_l):.1f} to {max(cs_l):.1f} s launch time is the driver, and Claude Squad's own cost is about 0.2 to 0.4 s per session. Orca's CLI accepted 6 concurrent <code>worktree create</code> calls (about 1.1 s each, in parallel), then a <code>terminal create</code> (about 0.34 s) each. Orca's peak RSS includes its runtime (orcad, a PTY daemon and the CLI processes). Claude Squad's includes tmux.</p>""")
-add("<div class='grid2'>" + hbar([("Baseline (git worktree)", base["_total_wall_s"]), ("Orca CLI", st.mean(r["total"] for r in lane["Orca (orca serve CLI)"])), ("Claude Squad TUI", st.mean(r["total"] for r in lane["Claude Squad"]))], unit=" s", note="Mean wall time from start to all 6 tasks verified (10 s is simulated work).") +
+add("<div class='grid2'>" + hbar([("Baseline (git worktree)", base["_total_wall_s"]), ("Orca CLI", st.mean(r["total"] for r in lane["Orca (orca serve CLI)"])), ("Claude Squad TUI", st.mean(r["total"] for r in lane["Claude Squad"])), ("Realm CLI*", st.mean(r["total"] for r in lane["Realm (realm serve CLI)*"]))], unit=" s", note="Mean wall time from start to all 6 tasks verified (10 s is simulated work).") +
     line_chart([("Orca run 1", series(f"{RUNS}/repeat/orca-res1.csv")), ("Claude Squad run 1", series(f"{RUNS}/repeat/cs-res1.csv"))], ylab="RSS MB") + "</div>")
 add("<p class='cap' style='text-align:right'>Right: summed RSS of each tool's processes, sampled every second during run 1.</p>")
 
 add("<h3>6.3 · Crash containment, restart recovery, worktrees and merges</h3>")
 def crash_row(name, d):
     s = d["sessions"]; return [name, "t3 SIGKILLed at 5 s", f"{sum(1 for v in s.values() if v.get('verified'))}/5 others verified", "yes" if s["t3"]["partial_file"] else "no", "t3 not verified (expected)"]
-add(table(["Tool", "Fault", "Other sessions", "Partial work kept in worktree", "Crashed task"], [crash_row("Claude Squad", cs_crash), crash_row("Orca", orca_crash)]))
+add(table(["Tool", "Fault", "Other sessions", "Partial work kept in worktree", "Crashed task"], [crash_row("Claude Squad", cs_crash), crash_row("Orca", orca_crash), crash_row("Realm*", realm_crash)]))
 add("""<ul class='tight'>
 <li><b>Claude Squad restart.</b> We killed the whole tmux server under it and relaunched <code>cs</code>. All instances came back marked <i>paused</i> with their worktrees intact. The log says <code>tmux session for "t3" no longer exists; pausing instance so it can be resumed</code>, and the UI offered <code>r</code> to resume (<code>runs/C-claude-squad/restart-after-tmux-kill.txt</code>). In the TUI's text the crashed instance looked like the others. Only its diff count (+1,-0) gave it away. There is no explicit "crashed" label.</li>
 <li><b>Orca restart.</b> We restarted <code>orca serve</code> 3 times. Every time the runtime was ready in """ + ", ".join(f"{x} s" for x in orca_ready) + """, and the managed terminals were still listed afterwards. Startup prints "terminals survive an orcad restart: yes". We did see 12 terminals listed for 6 worktrees after repeated remove-and-recreate cycles. We did not check whether those were stale.</li>
 <li><b>Where worktrees go.</b> Claude Squad uses <code>~/.claude-squad/worktrees/&lt;prefix&gt;/&lt;name&gt;_&lt;hash&gt;</code> with branches <code>&lt;prefix&gt;/&lt;name&gt;</code>. Orca uses <code>~/orca/workspaces/&lt;repo&gt;/&lt;name&gt;</code> with a branch named after the task. Both left uncommitted changes in the worktree and committed nothing on their own during our runs.</li>
-<li><b>Merge correctness.</b> We committed each tool's worktrees and merged the branches into main in task order with git, because neither tool merges locally in the paths we used. Results: """ + f"Claude Squad {sum(1 for m in cs_merge['merges'] if m['result']=='clean')}/6 clean, Orca {sum(1 for m in orca_merge['merges'] if m['result']=='clean')}/6 clean. The only conflict in each was t5b in <code>shelf/config.py</code>, the conflict we designed. After merging, t1 to t5a all still pass on the merged main for both tools. Neither tool warned that two sessions were editing the same function.</li></ul>")
+<li><b>Merge correctness.</b> We committed each tool's worktrees and merged the branches into main in task order with git, because neither tool merges locally in the paths we used. Results: """ + f"Claude Squad {sum(1 for m in cs_merge['merges'] if m['result']=='clean')}/6 clean, Orca {sum(1 for m in orca_merge['merges'] if m['result']=='clean')}/6 clean, Realm* {sum(1 for m in realm_merge['merges'] if m['result']=='clean')}/6 clean. The only conflict in each was t5b in <code>shelf/config.py</code>, the conflict we designed. After merging, t1 to t5a all still pass on the merged main for both tools. Neither tool warned that two sessions were editing the same function.</li></ul>")
 
 add("<h3>6.4 · Lane B: real model (opencode + Groq free tier)</h3>")
 add(table(["Model path", "Task", "Agent exit", "Wall (s)", "Verified"], [[esc(r["model"]), r["task"], esc(str(r["exit"])), f"<span class='num'>{r['wall'] if r['wall'] is not None else '–'}</span>", "pass" if r["ok"] else "fail"] for r in lb]))
@@ -289,11 +321,16 @@ DD = {
  "sculptor": ("Anyone who needs real sandboxing (containers).", ["Container per agent; pairing mode"], ["Docker required; narrow agent support; small community"]),
  "openchamber": ("OpenCode users who want a GUI and multi-model fan-out.", ["No-login, polished first run"], ["Tied to OpenCode"]),
  "mux": ("Coder users; not enough evidence to recommend more broadly.", ["Launched fine on Linux"], ["Rename to Xum; feature set unverified here"]),
+ "realm": ("Anyone who wants every agent CLI in one window on a Mac or Linux, and anyone who wants to script parallel agents from a shell (`realm serve` + `realm run`, shipped inside the app).",
+           [f"Headless server and CLI inside the app: six worktree-isolated sessions launched in {span([r['launch'] for r in lane['Realm (realm serve CLI)*']])} s, {span([r['rss'] for r in lane['Realm (realm serve CLI)*']], '{:.0f}')} MB peak for six; Orca on the same runner {span([d['all_launched_s'] for d in orca_same])} s and {span(orca_same_rss, '{:.0f}')} MB (author-run, see note)",
+            f"Linux AppImage opens in {realm_gui['first_window_s']} s with {realm_gui['rss_mb_tree']:,} MB and no account wall (Orca on the same runner: {orca_gui_same['first_window_s']} s, {orca_gui_same['rss_mb_tree']:,} MB)",
+            "Worktree plus port block per session, optional Seatbelt sandbox, crash isolation reported per session (signal and exit code)", "13 agent CLIs through Agent SDK, Codex app-server and one ACP adapter; ship-to-PR and PR review in app"],
+           ["Young: about two months old, with few stars at the time of writing", "Linux and Windows builds are new (2.3), and the Linux numbers here are the author's own runs", "The iPhone app is a TestFlight beta"]),
 }
-shots = {"orca": "orca", "synara": "synara", "superset": "superset", "emdash": "emdash", "paseo": "paseo", "openchamber": "openchamber", "cloudroom": "cloudroom-gui", "mux": "mux"}
+shots = {"realm": "realm", "orca": "orca", "synara": "synara", "superset": "superset", "emdash": "emdash", "paseo": "paseo", "openchamber": "openchamber", "cloudroom": "cloudroom-gui", "mux": "mux"}
 for i in ranked:
     t = T[i]; who, pros, cons = DD[i]; s, cov = score(i)
-    tested = "ok" if i in ("orca", "cs") else ("" if i in ("t3", "synara", "superset", "emdash", "paseo", "vk", "openchamber", "mux", "cloudroom") else "no")
+    tested = "ok" if i in ("orca", "cs", "realm") else ("" if i in ("t3", "synara", "superset", "emdash", "paseo", "vk", "openchamber", "mux", "cloudroom") else "no")
     tl = {"ok": "Driven end-to-end", "": "Installed / launched", "no": "Not testable here"}[tested]
     add(f"<div class='tool'><div><h3>{esc(t['name'])}</h3><div class='meta'>{esc(t['maker'])}<br><a href='{esc(t['url'])}'>{esc(t['url'])}</a><br>{repo_link(t)}<br>{esc(t['license'])}</div><span class='pill {tested}'>{tl}</span><span class='pill'>Score {s} · cov {cov}%</span>" + (f"<img class='shot' src='{img(shots[i])}' alt=''>" if i in shots else "") + "</div>")
     add(f"<div><p><b>Who it's for.</b> {esc(who)}</p><div class='grid2'><div><b>Strengths</b><ul class='tight'>" + "".join(f"<li>{esc(x)}</li>" for x in pros) + "</ul></div><div><b>Weaknesses</b><ul class='tight'>" + "".join(f"<li>{esc(x)}</li>" for x in cons) + "</ul></div></div>")
@@ -353,12 +390,16 @@ for i in ranked:
 m("\nScores are judgement from cited evidence. Criteria without evidence score a neutral 2.5; coverage shows how much weight a score rests on.\n")
 m("## Hands-on\n\n### Launch probes\n\n| Tool | First window (s) | RSS MB | Gate |\n|---|---|---|---|")
 for k in order: m(f"| {names[k]} | {gui[k]['first_window_s']} | {gui[k]['rss_mb_tree']} | {html.unescape(gate[k]).replace('<b>','').replace('</b>','')} |")
+m(f"| Realm 2.5.0* | {realm_gui['first_window_s']} | {realm_gui['rss_mb_tree']} | none (agent picker; sign-in optional) |")
 m(f"| T3 Code server | {t3['ready_s']} (port) | {t3['idle_rss_mb']} | none |\n")
+m(REALM_GUI_NOTE + "\n")
 m("### Lane A (stub agent, 6 parallel)\n\n| Harness | Runs | All launched (s) | Mean wall (s) | Verified | Peak RSS MB |\n|---|---|---|---|---|---|")
 m(f"| Baseline git worktree | 1 | {base['_worktree_setup_s']} | {base['_total_wall_s']} | 6/6 | - |")
 for tool, runs in lane.items():
     m(f"| {tool} | 3 | {min(r['launch'] for r in runs):.2f} to {max(r['launch'] for r in runs):.2f} | {st.mean(r['total'] for r in runs):.1f} | {sum(r['verified'] for r in runs)}/18 | {min(r['rss'] for r in runs):.0f} to {max(r['rss'] for r in runs):.0f} |")
-m("\nClaude Squad launch includes about 1.1 s per session of driver keystroke delays. Crash test (t3 SIGKILL): both tools kept the other 5 sessions verified and preserved the partial work. Merges done with git: 5/6 clean for both, with t5b conflicting in shelf/config.py as designed.\n")
+m("\n" + REALM_NOTE)
+m("\n| Same GitHub runner, same job (author-run) | Realm* | Orca 1.4.230 |\n|---|---|---|\n" + "\n".join(f"| {a} | {b} | {c} |" for a, b, c in SAME))
+m("\nClaude Squad launch includes about 1.1 s per session of driver keystroke delays. Crash test (t3 SIGKILL): both tools kept the other 5 sessions verified and preserved the partial work. Merges done with git: 5/6 clean for both, with t5b conflicting in shelf/config.py as designed. Realm* matched both: 5/5 others verified with t3's partial work kept, and 5/6 clean merges.\n")
 m("### Lane B (real model)\n\n| Model | Task | Exit | Wall s | Verified |\n|---|---|---|---|---|")
 for r in lb: m(f"| {r['model']} | {r['task']} | {r['exit']} | {r['wall'] or '-'} | {'pass' if r['ok'] else 'fail'} |")
 m("\n## Verdicts\n\n" + "\n".join(f"- **{a}**: {b}" for a, b in V))

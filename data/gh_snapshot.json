@@ -266,6 +266,21 @@
    "latest_release_date": "2026-06-03T09:49:25Z",
    "releases_in_last_30_returned": 30,
    "oldest_of_those": "2026-05-18T09:26:57Z"
+  },
+  "31Carlton7/realm": {
+   "stars": 116,
+   "forks": 10,
+   "open_issues_and_prs": 19,
+   "license": "MIT",
+   "created": "2026-08-23T12:27:40Z",
+   "pushed": "2026-10-24T17:01:17Z",
+   "archived": false,
+   "homepage": "https://realm.computer",
+   "latest_release": "v2.5.0",
+   "latest_release_date": "2026-10-24T16:27:57Z",
+   "releases_in_last_30_returned": 19,
+   "oldest_of_those": "2026-09-04T01:30:53Z",
+   "fetched_utc": "2026-10-24T17:05:00Z (after the snapshot)"
   }
  }
 }

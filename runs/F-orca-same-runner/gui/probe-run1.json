@@ -1,0 +1,9 @@
+{
+ "tool": "orca",
+ "first_window_s": 4.36,
+ "alive_after_12s": true,
+ "exit_code": null,
+ "rss_mb_tree": 932,
+ "procs": 7,
+ "visible_windows": 1
+}

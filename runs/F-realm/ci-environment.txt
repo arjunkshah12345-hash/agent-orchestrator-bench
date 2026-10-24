@@ -1,0 +1,10 @@
+Runner:    GitHub-hosted ubuntu-latest, image ubuntu24 20261012.334.1, run 40114216116 attempt 1
+Realm:     v2.5.0 release (https://github.com/31Carlton7/realm/releases/download/v2.5.0): Realm-2.5.0.AppImage 259636285 bytes, sha256 61ecf73c7cf37640243b7ed8f0320cebf1890b5810722277a92b416c9a4e43c0; realm_2.5.0_amd64.deb sha256 59c5f1d7d6149e7ea84ea3d05872a89cbda95eaf458835b9c2206910cc45a8e7
+Harness:   github.com/31Carlton7/realm commit fbf3af497129122b808dc3cc43787fc931602743 (ci/linux-bench), bench/ and this workflow
+Orca:      v1.4.230 orca-linux.AppImage 265514790 bytes, sha512 checked against its latest-linux.yml
+OS:        Ubuntu 24.04.5 LTS, kernel 6.17.0-1022-azure, x86_64
+CPU:       4 vCPU, AMD EPYC 7763 64-Core Processor
+Memory:    15989 MB
+Tools:     Python 3.12.3, git version 2.55.0, tmux 3.4, Xvfb 2:21.1.12-1ubuntu1.9
+Agent CLI: none on PATH (checked: claude codex gemini cursor-agent opencode copilot goose qwen grok amp aider)
+FUSE:      fuse3 3.14.0-5build1; /dev/fuse present

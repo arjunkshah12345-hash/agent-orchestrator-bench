@@ -1,0 +1,17 @@
+{
+ "tool": "realm",
+ "bundle": "/Applications/Realm.app",
+ "first_window_s": 2.46,
+ "alive_after_12s": true,
+ "exit_code": null,
+ "rss_mb_tree": 208,
+ "procs": 6,
+ "visible_windows": 1,
+ "screenshot": "<bench>/runs/E-gui-realm-mac/screen.png (sources/app.asar/out/renderer/index.html)",
+ "load_avg_at_end": [
+  12.5,
+  76.8,
+  218.4
+ ],
+ "port_free_after": true
+}

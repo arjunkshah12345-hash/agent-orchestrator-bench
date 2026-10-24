@@ -1,0 +1,9 @@
+sandbox_extension_issue_file_to_process failed for /var/folders/14/224nwfmx72lbz5rd86370k840000gn/T/gui-realm-rskz7l7p/Realm.app: 1 (Operation not permitted)
+
+DevTools listening on ws://127.0.0.1:9236/devtools/browser/1e33a965-4c47-4607-8ad9-b13b2163ea90
+[daemon] starting realm-server (none)
+[daemon] adopted pid 6908 on port 8796
+Checking for update
+Error: Error: ENOENT: no such file or directory, open '/private/var/folders/14/224nwfmx72lbz5rd86370k840000gn/T/gui-realm-rskz7l7p/Realm.app/Contents/Resources/app-update.yml'
+[scrollphase] native trackpad phases: ON
+[browser-agent] bridge connected
