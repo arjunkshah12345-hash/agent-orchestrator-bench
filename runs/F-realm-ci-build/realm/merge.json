@@ -1,0 +1,38 @@
+{
+ "merges": [
+  {
+   "branch": "realm/t1",
+   "result": "clean"
+  },
+  {
+   "branch": "realm/t2",
+   "result": "clean"
+  },
+  {
+   "branch": "realm/t3",
+   "result": "clean"
+  },
+  {
+   "branch": "realm/t4",
+   "result": "clean"
+  },
+  {
+   "branch": "realm/t5a",
+   "result": "clean"
+  },
+  {
+   "branch": "realm/t5b",
+   "result": "CONFLICT",
+   "files": [
+    "shelf/config.py"
+   ]
+  }
+ ],
+ "post_merge_verify": {
+  "t1": true,
+  "t2": true,
+  "t3": true,
+  "t4": true,
+  "t5a": true
+ }
+}

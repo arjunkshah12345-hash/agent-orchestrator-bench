@@ -1,0 +1,10 @@
+Realm lane A and app launch probe, macOS (author-run; conflict of interest: run by Realm's author, Carlton Aikins)
+
+Host:      Apple M4 Pro MacBook Pro, 14 cores, 24 GB, macOS 27.2 (Darwin 27.2.0), Python 3.14.6, git 2.51.2, Node v22.23.2
+Realm:     commit 119c67a1 (v2.4.0 + the `realm` CLI), `node apps/server/dist/realm.js`
+Harness:   harness/realm_suite.py with harness/sampler_ps.py (macOS has no /proc; same columns, ps-based RSS)
+Load:      a busy machine: iOS simulators and other work were running, load averages 10 to 160 (recorded per run).
+           The six hidden verifiers alone took 0.9 s here versus 0.6 s in the Linux container.
+App probe: gui/ = harness/gui_probe_mac.py on an APFS clone of the released Realm 2.4.0 app, clean userData and home,
+           agent CLIs pointed at /usr/bin/false. First on-screen window 2.46 to 2.90 s; process-tree RSS after 12 s
+           208 to 531 MB (6 processes; macOS memory compression under pressure makes this noisy). No account wall.

@@ -1,0 +1,2 @@
+/home/runner/work/_temp/bench/tools/realm-x/Realm-2.5.0.AppImage: OK
+/home/runner/work/_temp/bench/tools/realm-x/realm_2.5.0_amd64.deb: OK

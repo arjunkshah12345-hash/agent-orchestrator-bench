@@ -1,0 +1,4 @@
+installed: realm 2.5.0 640602 KB
+/usr/bin/realm -> /opt/Realm/realm
+Realm 2.5.0 is running on /home/runner/work/_temp/deb-home
+{"running":true,"realmHome":"/home/runner/work/_temp/deb-home","version":"2.5.0","machineName":"runnervm8k3b6","userName":"","bootId":"507d5020-1576-43ab-aa28-57ab7f82b40e","protocol":1,"detachedSince":null,"remoteUrl":null}

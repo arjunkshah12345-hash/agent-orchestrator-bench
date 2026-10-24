@@ -1,0 +1,3 @@
+installed: realm 2.4.0 649191 KB
+/usr/bin/realm -> /opt/Realm/realm
+{"running":true,"realmHome":"/home/runner/work/_temp/deb-home","version":"0.0.1","machineName":"runnervm8k3b6","userName":"","bootId":"8aae3842-cb48-453c-a1ef-f2a411be1c21","protocol":1,"detachedSince":null}

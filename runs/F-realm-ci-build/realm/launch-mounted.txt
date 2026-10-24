@@ -1,0 +1,30 @@
+realm-mounted: first window 1.7 s; 873 MB over 7 processes 12 s later
+    225 MB  /tmp/.mount_Realm-gbbGbg/realm --no-sandbox
+    214 MB  /proc/self/exe --type=renderer --enable-crash-reporter=fa8a80cd-4eca-4392-a914-e66427b1e0ce,no_channel --user-data-dir=/tmp/home-launch-realm-mounted/.config/@r
+    153 MB  /tmp/.mount_Realm-gbbGbg/realm /tmp/.mount_Realm-gbbGbg/resources/server/dist/main.js
+     83 MB  /proc/self/exe --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --enable-crash-reporter=fa8a
+     80 MB  /tmp/.mount_Realm-gbbGbg/realm --type=zygote --no-zygote-sandbox --no-sandbox
+     59 MB  /tmp/.mount_Realm-gbbGbg/realm --type=zygote --no-zygote-sandbox --no-sandbox
+     59 MB  /tmp/.mount_Realm-gbbGbg/realm --type=zygote --no-sandbox
+orca-mounted: first window 2.24 s; 882 MB over 6 processes 12 s later
+    305 MB  /tmp/.mount_orca-lfNPBfP/orca-ide --no-sandbox
+    207 MB  /tmp/.mount_orca-lfNPBfP/orca-ide --type=renderer --crashpad-handler-pid=7483 --enable-crash-reporter=10350375-7156-4fd2-ba09-c0f73f64ee63,no_channel --user-dat
+    162 MB  /tmp/.mount_orca-lfNPBfP/orca-ide --type=gpu-process --no-sandbox --ozone-platform=x11 --crashpad-handler-pid=7483 --enable-crash-reporter=10350375-7156-4fd2-ba
+     90 MB  /tmp/.mount_orca-lfNPBfP/orca-ide --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --crashpa
+     60 MB  /tmp/.mount_orca-lfNPBfP/orca-ide --type=zygote --no-zygote-sandbox --no-sandbox
+     59 MB  /tmp/.mount_orca-lfNPBfP/orca-ide --type=zygote --no-sandbox
+realm-mounted: first window 1.7 s; 871 MB over 7 processes 12 s later
+    225 MB  /tmp/.mount_Realm-AfiaFj/realm --no-sandbox
+    215 MB  /proc/self/exe --type=renderer --enable-crash-reporter=30a47a62-8623-4e6b-bc86-87ef9950861c,no_channel --user-data-dir=/tmp/home-launch-realm-mounted/.config/@r
+    151 MB  /tmp/.mount_Realm-AfiaFj/realm /tmp/.mount_Realm-AfiaFj/resources/server/dist/main.js
+     83 MB  /proc/self/exe --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --enable-crash-reporter=30a4
+     79 MB  /tmp/.mount_Realm-AfiaFj/realm --type=zygote --no-zygote-sandbox --no-sandbox
+     59 MB  /tmp/.mount_Realm-AfiaFj/realm --type=zygote --no-zygote-sandbox --no-sandbox
+     59 MB  /tmp/.mount_Realm-AfiaFj/realm --type=zygote --no-sandbox
+orca-mounted: first window 2.24 s; 881 MB over 6 processes 12 s later
+    305 MB  /tmp/.mount_orca-lIlcFBi/orca-ide --no-sandbox
+    205 MB  /tmp/.mount_orca-lIlcFBi/orca-ide --type=renderer --crashpad-handler-pid=7918 --enable-crash-reporter=4f325abf-c97d-446a-bc78-a16f2ee376ad,no_channel --user-dat
+    162 MB  /tmp/.mount_orca-lIlcFBi/orca-ide --type=gpu-process --no-sandbox --ozone-platform=x11 --crashpad-handler-pid=7918 --enable-crash-reporter=4f325abf-c97d-446a-bc
+     90 MB  /tmp/.mount_orca-lIlcFBi/orca-ide --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --crashpa
+     60 MB  /tmp/.mount_orca-lIlcFBi/orca-ide --type=zygote --no-zygote-sandbox --no-sandbox
+     60 MB  /tmp/.mount_orca-lIlcFBi/orca-ide --type=zygote --no-sandbox

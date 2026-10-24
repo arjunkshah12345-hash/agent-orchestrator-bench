@@ -41,6 +41,20 @@ TOOLS = [
   review=U, remote="Strong by design: cloud VM execution, sessions sync to phone (maker's post)", mcp=U, cost=U, models="BYO subscriptions, harness, model, inference provider",
   setup="GUI app + self-hosted core (`sudo bash install.sh` on a fresh Ubuntu 24.04 VM)", hands_on="GUI AppImage launched (3.3 s, 795 MB). Core not installed: its installer needs root + systemd on a fresh VM, which we did not do on a shared box.",
   bugs=U, notes="Open dispute on X (Oct 18 2026) between David Ondrej and Theo over a third-party tier list; we cite neither side's claims as evidence."),
+ dict(id="realm", name="Realm", maker="Carlton Aikins (31Carlton7)", group="Orchestrator app", url="https://realm.computer", repo="31Carlton7/realm",
+  license="MIT (LICENSE added 2026-10-24, #221)", oss="Yes", price="Free; BYO subscriptions (each agent CLI signs in with your own account; no Realm account)",
+  platforms="macOS Apple silicon (signed, notarized dmg/zip with in-app updates); Linux AppImage + deb and Windows exe on releases since 2.3; a headless server and the `realm` CLI ship inside every app at resources/bin from 2.5.0 and run on the app's own binary (no Node); Realm for iPhone (TestFlight)",
+  agents="Claude Code (Agent SDK), Codex (app-server), and Cursor, Gemini, OpenCode, GitHub Copilot, goose, Qwen Code, Grok, fx, DeepSeek, OpenHands, Hermes through one generic ACP adapter; any command line via `realm run` (stub proven here)",
+  parallel="Session per agent, optionally in its own worktree; teammates and sub-agents fanned out from a session across providers (agent_start / delegation); `realm run` launches N commands into N worktrees concurrently",
+  isolation="Git worktree per session or run under ~/Realm/worktrees, each with a reserved port block exported to its shells; optional per-space macOS Seatbelt sandbox for agents and terminals (not a container; network stays open)",
+  review="Changes pane (diffs grouped by kind), checkpoints with restore, commit + push + open PR as one action (workspace.ship), Code Review page for pull requests through the user's gh with reviewer runs",
+  remote="Strong: a remote runtime, `realm serve --listen`, over TLS, behind Tailscale Serve (`--tailscale`) or through an SSH tunnel, with revocable access tokens (stored hashed, rate-limited, browser origins refused); `--server` aims every `realm` command at it; `realm service install` keeps it running under systemd or launchd; Realm for iPhone pairs with a Mac or a headless server (`realm pair` draws the code in a terminal) through Realm's production relay, end-to-end encrypted. The iPhone app is a TestFlight beta (public link in Apple's beta review on 2026-10-24). No web client; no hosted cloud execution.",
+  mcp="Yes: one MCP gateway per session (Realm's agent, terminal, browser, docs and workspace tools) that also proxies third-party MCP servers without handing the agent their credentials",
+  cost="Partial: usage summaries, budgets and plan-limit readouts (usage.*, limits.get); depth not verified here", models="Per agent; one picker across harnesses with effort and fast mode",
+  setup="Install the app (Mac dmg, Linux AppImage or deb, Windows installer); first run asks for an agent and a space name, sign-in optional, no Realm account. Headless: `<app>/resources/bin/realm serve`",
+  hands_on="v2.5.0 release, Linux AppImage on Xvfb: first window 3.32 s, 968 MB process tree, no account wall (Orca 1.4.230 on the same runner, same probe: 4.10 s, 922 MB). Driven end-to-end headless with the stub agent through the `realm` command the AppImage ships (`realm serve` + `realm run`, no Node, no display): 18/18 verified over 3 runs, 6 launched in 0.51 to 0.57 s, peak RSS 342 to 345 MB, server ready in 0.51 to 0.52 s (Orca on the same runner: 2.58 to 2.67 s, 1227 to 1347 MB, 3.24 to 3.34 s); crash isolation; merge 5/6. Run by Realm's author on a GitHub ubuntu-latest runner (runs/F-realm/environment.txt); earlier CI-build, container and macOS runs agree.",
+  bugs="The Linux and Windows builds are new (2.3); docs/platforms.md says what has run there (the Linux AppImage and deb on GitHub runners) and what has not. Found while measuring: the v2.5.0 Windows installer's server cannot load one of its packages (`pkce-challenge`) after install, so the installed Windows app does not start its server; the unpacked Windows build works, and a fix is being prepared. The iPhone app is a beta. README says 'in active development'.",
+  notes="Submitted by Realm's author, who also wrote the `realm` CLI, the remote runtime and the Linux packaging changes measured here. The numbers come from the published v2.5.0 release (2026-10-24), the first that ships `resources/bin/realm`, checked against the sha256 it records. GitHub figures fetched after the bench snapshot."),
  dict(id="conductor", name="Conductor", maker="Melty Labs", group="Orchestrator app", url="https://www.conductor.build", repo=None,
   license="Proprietary", oss="No", price="Free local workspaces; Pro $50/mo (cloud, multiplayer, API, iPhone app); Teams $60/user/mo",
   platforms="macOS only (Apple Silicon + Intel); iPhone app for cloud workspaces", agents="Claude Code, Codex, Cursor, OpenCode",
@@ -113,7 +127,7 @@ TOOLS = [
  dict(id="omnara", name="Omnara", maker="Omnara", group="Pivoted", url="https://www.omnara.com", repo="omnara-ai/omnara", license="Apache-2.0", oss="Yes", price="Self-host free; cloud pay-as-you-go ($0.0414/GiB-hour machines per pricing page summary)", platforms="Linux/macOS daemon binaries",
   agents="Any compatible model", parallel="Managed agents", isolation="Machines", review=U, remote="Cloud", mcp=U, cost="Usage-based", models="Any", setup="-", hands_on="Not tested: it pivoted from mobile remote-control for coding CLIs to a managed-agent platform, a different category.", bugs=U, notes=""),
 ]
-SCORED = ["t3","synara","orca","cloudroom","conductor","cs","superset","emdash","paseo","vk","sculptor","openchamber","mux"]
+SCORED = ["t3","synara","orca","cloudroom","conductor","cs","superset","emdash","paseo","vk","sculptor","openchamber","mux","realm"]
 CRITERIA = [  # key, label, weight, what 5 means
  ("A","Agent breadth",15,"5: 8+ agent CLIs documented, or arbitrary CLI proven"),
  ("B","Isolation and parallelism",15,"5: strong per-task isolation (worktree+remote, or containers) plus fan-out"),
@@ -140,6 +154,7 @@ SCORES = {
  "sculptor": dict(A=2,B=5,C=3,D=2,E=4,F=2,G=None,H=4,I=3),
  "openchamber":dict(A=3,B=4,C=None,D=4,E=5,F=4,G=4,H=5,I=None),
  "mux":      dict(A=None,B=3,C=None,D=None,E=4,F=3,G=3,H=4,I=None),
+ "realm":    dict(A=5,B=5,C=5,D=5,E=5,F=3,G=5,H=5,I=5),
 }
 WHY = {
  "t3":"Broadest documented harness list with ACP; best-documented PR flow; strongest remote story. Isolation scored 4 because we could not exercise it.",
@@ -155,6 +170,7 @@ WHY = {
  "sculptor":"Best isolation model (containers) but narrow agent support, small community, Docker needed.",
  "openchamber":"Polished OpenCode front end with multi-model fan-out; OpenCode-only.",
  "mux":"Little verified detail; scored on what we saw.",
+ "realm":"Driven headless end-to-end like Orca, through a command that ships inside the app: on the same runner, a quarter of Orca's memory under load (about 340 MB for six sessions), three times its launch speed, a server ready in 0.6 s, and a Linux AppImage that opens faster with no account wall. Worktrees plus port blocks plus an optional Seatbelt sandbox, a full ship/PR flow, a remote runtime with access tokens, and phone pairing even with a headless server. MIT-licensed. Young (two months, few stars) but shipping several releases a week with no open issues. Self-submitted by its author; measured on a GitHub runner with Orca beside it.",
 }
 SECONDARY_MENTIONS = ["BridgeMind (paid, Aug 2026 beta)", "CodeAgentSwarm (closed, open beta)", "Morphy (closed; its author wrote the main roundup we used)", "Nimbalyst (Crystal successor)", "JetBrains Air", "Zed Threads", "GitHub Copilot app", "Google Antigravity 2.0", "Pane", "Herdr, Tern, bb, Capy (named in X tier-list replies; unverified)"]
 SOURCES = [
@@ -165,6 +181,7 @@ SOURCES = [
  ("Theo on X re: T3 Code","https://x.com/theo/status/2111975231518867705"),("Synara maintainer on X","https://x.com/emanueledpt/status/2111396829908869248"),
  ("Conductor pricing","https://www.conductor.build/pricing"),("Claude Squad repo","https://github.com/smtg-ai/claude-squad"),("Superset","https://superset.sh"),("Emdash","https://emdash.com"),("Paseo","https://paseo.sh"),
  ("Vibe Kanban repo","https://github.com/BloopAI/vibe-kanban"),("Sculptor","https://imbue.com/product/sculptor/"),("Terragon shutdown","https://www.terragonlabs.com/"),("Omnara pricing","https://www.omnara.com/pricing"),
+ ("Realm site","https://realm.computer"),("Realm repo + releases","https://github.com/31Carlton7/realm/releases"),("Realm architecture","https://github.com/31Carlton7/realm/blob/main/docs/architecture/README.md"),("Realm on Linux and Windows (platform status)","https://github.com/31Carlton7/realm/blob/main/docs/platforms.md"),
  ("Cursor Agents Window","https://cursor.com/docs/agent/agents-window"),("Warp orchestration","https://docs.warp.dev/platform/orchestration/"),("Amp pricing","https://ampcode.com/docs/pricing"),
  ("Secondary: appmorphy roundup (author builds a competitor, disclosed)","https://www.appmorphy.com/blog/best-tools-run-multiple-ai-coding-agents"),("Secondary: Augment Code OSS orchestrators","https://www.augmentcode.com/tools/open-source-agent-orchestrators"),("Secondary: Nimbalyst roundup (vendor)","https://nimbalyst.com/blog/best-ai-agent-orchestration-platforms-2026/"),
 ]

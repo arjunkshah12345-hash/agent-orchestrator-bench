@@ -1,0 +1,20 @@
+{
+ "orca_serve_ready_s": [
+  3.34,
+  3.31,
+  3.28,
+  3.31,
+  3.24
+ ],
+ "idle_rss_mb": [
+  412,
+  385,
+  388,
+  409,
+  389
+ ],
+ "serve_without_display": {
+  "ready_s": 3.64,
+  "exit_code": null
+ }
+}

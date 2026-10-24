@@ -1,0 +1,28 @@
+Realm v2.5.0 lane A and Linux launch probe, x86_64 (author-run; conflict of interest: run by Realm's author, Carlton Aikins)
+
+Runner:    GitHub-hosted ubuntu-latest, image ubuntu24 20261012.334.1: Ubuntu 24.04.5 LTS, kernel 6.17.0-1022-azure, x86_64,
+           4 vCPU AMD EPYC 7763, 15989 MB RAM, no GPU. https://github.com/31Carlton7/realm/actions/runs/40114216116
+Realm:     the published v2.5.0 release, https://github.com/31Carlton7/realm/releases/tag/v2.5.0, downloaded by the job and checked
+           against the sha256 the release records (realm-sha256.txt):
+             Realm-2.5.0.AppImage    259636285 bytes  sha256 61ecf73c7cf37640243b7ed8f0320cebf1890b5810722277a92b416c9a4e43c0
+             realm_2.5.0_amd64.deb   220011184 bytes  sha256 59c5f1d7d6149e7ea84ea3d05872a89cbda95eaf458835b9c2206910cc45a8e7
+           `realm status` answers "Realm 2.5.0" (deb-serve.txt).
+Orca:      v1.4.230 orca-linux.AppImage from its GitHub release, sha512 checked against its latest-linux.yml, measured in the same
+           job on the same runner: runs/F-orca-same-runner/.
+Tools:     Python 3.12.3, git 2.55.0, tmux 3.4, Xvfb 21.1.12. No agent CLI on PATH (checked: claude codex gemini cursor-agent
+           opencode copilot goose qwen grok amp aider). fuse3 3.14.0 installed, libfuse2 not.
+Harness:   this repo's harness and fixture as of the add-realm branch, run by .github/workflows/linux-bench.yml at Realm commit
+           fbf3af49 (branch ci/linux-bench), which builds nothing. The fixture repo got its one "fixture base" commit first (fixed
+           date), as realm_run.py gives its copy, so orca_run.py had a branch to make worktrees from too.
+Lane A:    REALM_BIN=<squashfs-root>/resources/bin/realm python3 harness/realm_suite.py, with no DISPLAY. REALM_ENABLE_FAKE_AGENT=1
+           is set and only the stub runs, so nothing can reach a billed model.
+Launch:    python3 harness/gui_probe.py realm Realm-2.5.0.AppImage on Xvfb :90 (1440x900x24, no window manager). One launch of each
+           app that was not counted (Orca's first), then 3 of each, alternating and turning the order round each time:
+           gui/probe-*.json, and the median launch's app.log and screen.png. The first GUI launch on a fresh runner is slow for
+           whichever app goes first (Orca's took 11.0 s here, then 4.10 to 4.36).
+Other:     footprint.txt: sizes, file counts and AppImage runtimes of both apps. launch-extracted.txt and launch-mounted.txt:
+           each app started from its extracted AppDir, then mounted with FUSE as a double-click runs it, with the RSS of every
+           process 12 s later. deb-serve.txt: the deb installed with apt, serving from /opt/Realm/resources/bin/realm.
+           ci-summary.md and ci-environment.txt: the job's own record.
+Earlier:   runs 40111967426 and 40112746780 of the same job on the same release agree. runs/F-realm-ci-build/ holds the same job on
+           a pre-release CI build.

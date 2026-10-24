@@ -7,7 +7,7 @@ Box: Linux x86_64, 8 vCPU, 16 GB, no Docker, no authenticated agent CLIs. GitHub
 - **Orca** is the only GUI orchestrator we drove end-to-end on Linux, headless via `orca serve` (ready in 2.79 to 3.06 s). It launched 6 worktree-isolated stub agents concurrently in 1.52 to 1.90 s and verified 18/18 over 3 runs, with about 1.1 GB peak RSS.
 - **Claude Squad** was driven through its TUI via tmux and also verified 18/18, at about 100 MB peak RSS. It restored sessions as paused and resumable after we killed tmux.
 - **T3 Code**'s server booted headless in 1.01 s (394 MB idle). It has the richest documented feature set, but we ran no agent session through it.
-- Real-model lane: 0/9 attempts passed. The only key was a Groq free tier (7 to 8k TPM) and one opencode request was 7.3 to 8.6k tokens (3 rate-limit, 106 too-large, 3 tool-schema errors).
+- Real-model lane: 0/9 attempts passed. The only key was a Groq free tier (7 to 8k TPM) and one opencode request was 7.3 to 8.6k tokens (3 rate-limit, 153 too-large, 3 tool-schema errors).
 
 ## Methodology
 
@@ -21,6 +21,7 @@ We ran a fixture repo with 6 tasks (bug fix, feature, refactor, test-writing wit
 | Synara | https://www.trysynara.com | Emanuele-web04/synara | MIT | 2126 | v1.0.7 2026-10-17 | Free; no account (install page). Maintainer seeking sponsorships (X, Oct 17 2026) |
 | Orca | https://www.onorca.dev | stablyai/orca | MIT | 97922 | v1.4.230 2026-10-19 | Free |
 | Cloudroom | https://www.cloudroom.dev | davidondrej/cloudroom-core (+ davidondrej/cloudroom-gui) | Apache-2.0 (core and GUI) | 906 | core-v0.1.65 2026-10-19 | Free, open source (maker's post); self-hostable core |
+| Realm | https://realm.computer | 31Carlton7/realm | MIT (LICENSE added 2026-10-24, #221) | 116 | v2.5.0 2026-10-24 | Free; BYO subscriptions (each agent CLI signs in with your own account; no Realm account) |
 | Conductor | https://www.conductor.build | closed | Proprietary | - | -  | Free local workspaces; Pro $50/mo (cloud, multiplayer, API, iPhone app); Teams $60/user/mo |
 | Claude Squad | https://smtg-ai.github.io/claude-squad/ | smtg-ai/claude-squad | AGPL-3.0 | 8628 | v1.0.20 2026-08-20 | Free |
 | Superset | https://superset.sh | superset-sh/superset | Elastic License 2.0 (source-available) | 15371 | desktop-v1.39.0 2026-10-19 | sec: Free for one user; Pro $20/user/mo |
@@ -58,6 +59,7 @@ David Ondrej's tool is **Cloudroom** (cloudroom.dev; davidondrej/cloudroom-core 
 
 | Tool | A | B | C | D | E | F | G | H | I | Score | Coverage |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| Realm | 5 | 5 | 5 | 5 | 5 | 3 | 5 | 5 | 5 | 94.0 | 100% |
 | Orca | 5 | 5 | 4 | 5 | 5 | 4 | 5 | 5 | 4 | 93.0 | 100% |
 | T3 Code | 5 | 4 | 5 | 5 | 5 | 4 | 4 | 5 | 3 | 90.0 | 100% |
 | Synara | 5 | 4 | 4 | 3 | 5 | 3 | 3 | 5 | 4 | 79.0 | 100% |
@@ -88,7 +90,10 @@ Scores are judgement from cited evidence. Criteria without evidence score a neut
 | Paseo 0.12.0 | 4.65 | 852 | none |
 | Cloudroom GUI v110-beta | 3.3 | 795 | none seen in 12 s |
 | Mux/Xum 0.31.0 | 6.08 | 1065 | gateway login offered, skippable |
+| Realm 2.5.0* | 3.32 | 968 | none (agent picker; sign-in optional) |
 | T3 Code server | 1.01 (port) | 394 | none |
+
+* Realm: author-run on a GitHub-hosted ubuntu-latest runner (x86_64, 4 vCPU, 16 GB, Ubuntu 24.04), the median of 3 launches after one that was not counted. Orca 1.4.230 on the same runner, same probe: 4.1 s, 922 MB. Logs: runs/F-realm/gui/, runs/F-orca-same-runner/gui/.
 
 ### Lane A (stub agent, 6 parallel)
 
@@ -97,8 +102,21 @@ Scores are judgement from cited evidence. Criteria without evidence score a neut
 | Baseline git worktree | 1 | 0.043 | 8.4 | 6/6 | - |
 | Claude Squad | 3 | 11.18 to 11.89 | 24.6 | 18/18 | 102 to 118 |
 | Orca (orca serve CLI) | 3 | 1.52 to 1.90 | 16.9 | 18/18 | 1124 to 1140 |
+| Realm (realm serve CLI)* | 3 | 0.51 to 0.57 | 15.5 | 18/18 | 342 to 345 |
 
-Claude Squad launch includes about 1.1 s per session of driver keystroke delays. Crash test (t3 SIGKILL): both tools kept the other 5 sessions verified and preserved the partial work. Merges done with git: 5/6 clean for both, with t5b conflicting in shelf/config.py as designed.
+* Realm: run by Realm's author (a disclosed conflict of interest) on a GitHub-hosted ubuntu-latest runner (x86_64, 4 vCPU, 16 GB, Ubuntu 24.04), not on the 8 vCPU box the other rows come from, through the `realm` command the v2.5.0 release's Linux AppImage ships (squashfs-root/resources/bin/realm). Same harness shape (harness/realm_run.py), same fixture, stub and verifiers. Orca 1.4.230 ran on the same runner in the same job (harness/orca_suite.py, runs/F-orca-same-runner/). Earlier runs are in runs/F-realm-ci-build/ (a pre-release CI build), runs/F-realm-container/ (a Debian 13 container) and runs/F-realm-macos/.
+
+| Same GitHub runner, same job (author-run) | Realm* | Orca 1.4.230 |
+|---|---|---|
+| First window, AppImage on Xvfb (s) | 3.32 | 4.1 |
+| Process-tree RSS 12 s later (MB) | 968 | 922 |
+| Headless server ready (s) | 0.51 to 0.52 | 3.24 to 3.34 |
+| All 6 launched (s) | 0.51 to 0.57 | 2.58 to 2.67 |
+| Mean wall, launch to verified (s) | 15.5 | 17.6 |
+| Verified | 18/18 | 18/18 |
+| Peak RSS (MB) | 342 to 345 | 1227 to 1347 |
+
+Claude Squad launch includes about 1.1 s per session of driver keystroke delays. Crash test (t3 SIGKILL): both tools kept the other 5 sessions verified and preserved the partial work. Merges done with git: 5/6 clean for both, with t5b conflicting in shelf/config.py as designed. Realm* matched both: 5/5 others verified with t3's partial work kept, and 5/6 clean merges.
 
 ### Lane B (real model)
 
@@ -163,6 +181,10 @@ Claude Squad launch includes about 1.1 s per session of driver keystroke delays.
 - [Sculptor](https://imbue.com/product/sculptor/)
 - [Terragon shutdown](https://www.terragonlabs.com/)
 - [Omnara pricing](https://www.omnara.com/pricing)
+- [Realm site](https://realm.computer)
+- [Realm repo + releases](https://github.com/31Carlton7/realm/releases)
+- [Realm architecture](https://github.com/31Carlton7/realm/blob/main/docs/architecture/README.md)
+- [Realm on Linux and Windows (platform status)](https://github.com/31Carlton7/realm/blob/main/docs/platforms.md)
 - [Cursor Agents Window](https://cursor.com/docs/agent/agents-window)
 - [Warp orchestration](https://docs.warp.dev/platform/orchestration/)
 - [Amp pricing](https://ampcode.com/docs/pricing)
